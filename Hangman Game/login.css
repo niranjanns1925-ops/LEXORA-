@@ -1,0 +1,762 @@
+/* ── Google Fonts ─────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap");
+
+/* ── Reset & Base ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ── Animated Background Particles ───────────────────────────────── */
+.bg-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-particles span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    animation: float 8s infinite;
+    opacity: 0.15;
+}
+
+.bg-particles span:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    background: #5E63BA;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.bg-particles span:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    background: #8286c9;
+    top: 70%;
+    left: 80%;
+    animation-delay: 2s;
+    animation-duration: 9s;
+}
+
+.bg-particles span:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    background: #5E63BA;
+    top: 50%;
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 6s;
+}
+
+.bg-particles span:nth-child(4) {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    top: 20%;
+    left: 60%;
+    animation-delay: 3s;
+    animation-duration: 11s;
+}
+
+.bg-particles span:nth-child(5) {
+    width: 60px;
+    height: 60px;
+    background: #8286c9;
+    top: 80%;
+    left: 30%;
+    animation-delay: 0.5s;
+    animation-duration: 8s;
+}
+
+.bg-particles span:nth-child(6) {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    top: 5%;
+    left: 85%;
+    animation-delay: 4s;
+    animation-duration: 10s;
+}
+
+.bg-particles span:nth-child(7) {
+    width: 90px;
+    height: 90px;
+    background: #5E63BA;
+    top: 60%;
+    left: 55%;
+    animation-delay: 1.5s;
+    animation-duration: 7s;
+}
+
+.bg-particles span:nth-child(8) {
+    width: 45px;
+    height: 45px;
+    background: #8286c9;
+    top: 35%;
+    left: 40%;
+    animation-delay: 2.5s;
+    animation-duration: 12s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-40px) scale(1.1);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ── Wrapper ──────────────────────────────────────────────────────── */
+.login-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 460px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ── Language Toggle ──────────────────────────────────────────────── */
+.lang-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 4px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lang-btn {
+    padding: 8px 22px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn.active {
+    background: #5E63BA;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(94, 99, 186, 0.5);
+}
+
+.lang-btn:hover:not(.active) {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Login Card ───────────────────────────────────────────────────── */
+.login-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 38px 36px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 0.35s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-3px);
+}
+
+/* ── Logo Area ────────────────────────────────────────────────────── */
+.logo-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hangman-icon {
+    font-size: 3rem;
+    display: inline-block;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.game-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(94, 99, 186, 0.8);
+}
+
+.game-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.88rem;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+/* ── Form ─────────────────────────────────────────────────────────── */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.4px;
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 1rem;
+    pointer-events: none;
+    user-select: none;
+}
+
+.input-wrap input {
+    width: 100%;
+    padding: 13px 14px 13px 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+}
+
+.input-wrap input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.input-wrap input:focus {
+    background: rgba(255, 255, 255, 0.13);
+    border-color: #8286c9;
+    box-shadow: 0 0 0 3px rgba(94, 99, 186, 0.25);
+}
+
+.eye-btn {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    padding: 4px;
+}
+
+.eye-btn:hover {
+    opacity: 1;
+}
+
+/* ── Form Footer ──────────────────────────────────────────────────── */
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.65);
+    user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+    accent-color: #5E63BA;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 0.84rem;
+    color: #8286c9;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ── Error Message ────────────────────────────────────────────────── */
+.error-msg {
+    color: #ff6b6b;
+    font-size: 0.84rem;
+    text-align: center;
+    min-height: 18px;
+    font-weight: 500;
+}
+
+/* ── Login Button ─────────────────────────────────────────────────── */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #5E63BA 0%, #8286c9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 8px 25px rgba(94, 99, 186, 0.45);
+    font-family: inherit;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(94, 99, 186, 0.6);
+    background: linear-gradient(135deg, #4a50a8 0%, #7378bc 100%);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+
+.login-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Divider ──────────────────────────────────────────────────────── */
+.divider {
+    position: relative;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.82rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+/* ── Guest Button ─────────────────────────────────────────────────── */
+.guest-btn {
+    width: 100%;
+    padding: 13px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.75);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.guest-btn:hover {
+    background: rgba(255, 255, 255, 0.13);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── No Account ───────────────────────────────────────────────────── */
+.no-account {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.87rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.no-account a {
+    color: #8286c9;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: color 0.2s;
+}
+
+.no-account a:hover {
+    color: #fff;
+}
+
+/* ── Fun Strip ────────────────────────────────────────────────────── */
+.fun-strip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.55);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+/* ── Shake Animation ──────────────────────────────────────────────── */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(8px);
+    }
+
+    60% {
+        transform: translateX(-6px);
+    }
+
+    80% {
+        transform: translateX(6px);
+    }
+}
+
+.login-card.shake {
+    animation: shake 0.45s ease;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS – Login Page
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Small Laptop / Large Tablet  (769px – 1024px) ────────────────── */
+@media (max-width: 1024px) {
+    .login-wrapper {
+        padding: 20px 16px;
+    }
+
+    .login-card {
+        max-width: 420px;
+        padding: 36px 30px;
+    }
+
+    .game-title {
+        font-size: 1.75rem;
+    }
+
+    .hangman-icon {
+        font-size: 2.6rem;
+    }
+}
+
+/* ── Tablet  (481px – 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+    body {
+        background-size: 250px 250px;
+    }
+
+    .login-wrapper {
+        padding: 16px 12px;
+    }
+
+    .login-card {
+        max-width: 400px;
+        padding: 30px 24px;
+        border-radius: 20px;
+    }
+
+    .login-card:not(.flat) {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .logo-area {
+        margin-bottom: 20px;
+    }
+
+    .game-title {
+        font-size: 1.65rem;
+    }
+
+    .game-subtitle {
+        font-size: 0.82rem;
+    }
+
+    .hangman-icon {
+        font-size: 2.4rem;
+    }
+
+    .lang-toggle {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .lang-btn {
+        padding: 7px 18px;
+        font-size: 0.84rem;
+    }
+
+    .form-group {
+        margin-bottom: 14px;
+    }
+
+    .form-control {
+        padding: 12px 40px 12px 14px;
+        font-size: 0.92rem;
+    }
+
+    .login-btn {
+        padding: 13px;
+        font-size: 0.95rem;
+    }
+
+    .guest-btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .fun-strip {
+        font-size: 0.78rem;
+        padding: 8px 14px;
+    }
+}
+
+/* ── Mobile  (≤ 480px) ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 10px 10px 20px;
+    }
+
+    .login-card {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+
+    .hangman-icon {
+        font-size: 2.1rem;
+    }
+
+    .game-title {
+        font-size: 1.4rem;
+    }
+
+    .game-subtitle {
+        font-size: 0.78rem;
+    }
+
+    .lang-btn {
+        padding: 6px 14px;
+        font-size: 0.79rem;
+    }
+
+    .form-label {
+        font-size: 0.8rem;
+    }
+
+    .form-control {
+        padding: 11px 38px 11px 13px;
+        font-size: 0.88rem;
+    }
+
+    .login-btn {
+        padding: 12px;
+        font-size: 0.92rem;
+    }
+
+    .guest-btn {
+        padding: 11px;
+        font-size: 0.88rem;
+    }
+
+    .no-account {
+        font-size: 0.82rem;
+    }
+
+    .fun-strip {
+        font-size: 0.74rem;
+        padding: 8px 12px;
+    }
+
+    .error-msg {
+        font-size: 0.8rem;
+    }
+
+    .field-hint {
+        font-size: 0.72rem;
+    }
+
+    .strength-label {
+        min-width: 60px;
+        font-size: 0.72rem;
+    }
+}
+
+/* ── Extra-Small  (≤ 360px) ─── tiny Android phones ───────────────── */
+@media (max-width: 360px) {
+    .login-card {
+        padding: 20px 14px;
+    }
+
+    .hangman-icon {
+        font-size: 1.8rem;
+    }
+
+    .game-title {
+        font-size: 1.2rem;
+    }
+
+    .lang-btn {
+        padding: 5px 11px;
+        font-size: 0.74rem;
+    }
+
+    .form-control {
+        padding: 10px 34px 10px 11px;
+        font-size: 0.84rem;
+    }
+
+    .login-btn,
+    .guest-btn {
+        padding: 11px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ── Password Strength Meter ──────────────────────────────────────── */
+.strength-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 50px;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+.strength-label {
+    font-size: 0.76rem;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.4s;
+}
+
+/* ── Success Message ──────────────────────────────────────────────── */
+.success-msg {
+    color: #2ecc71;
+    font-size: 0.84rem;
+    text-align: center;
+    min-height: 18px;
+    font-weight: 600;
+}
+
+/* ── Small field hint ─────────────────────────────────────────────── */
+.field-hint {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: -2px;
+}
+
+/* ── Scrollable wrapper when register card is tall ───────────────── */
+.login-wrapper {
+    overflow-y: auto;
+    max-height: 100vh;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}

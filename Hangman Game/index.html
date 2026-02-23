@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEXORA – Word Duel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="word-list.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ── Auth guard: redirect to login if no session ────────────────── -->
+    <script>
+        if (!sessionStorage.getItem('hgPlayer')) {
+            window.location.replace('login.html');
+        }
+    </script>
+
+    <!-- ── Game Over / Win Modal ──────────────────────────────────────── -->
+    <div class="game-modal">
+        <div class="content">
+            <img src="#" alt="gif">
+            <h4 id="modal-title">Game Over!</h4>
+            <p id="modal-body">The correct word was: <b>rainbow</b></p>
+            <button class="play-again" id="btn-play-again">Play Again</button>
+        </div>
+    </div>
+
+    <!-- ── Main Game Container ───────────────────────────────────────── -->
+    <div class="container">
+
+        <!-- Left: Hangman illustration + title -->
+        <div class="hangman-box">
+            <img src="hangman-0.svg" draggable="false" alt="hangman-img">
+            <h1 id="game-heading">LEXORA</h1>
+        </div>
+
+        <!-- Right: Word, hint, keyboard -->
+        <div class="game-box">
+
+            <!-- Top bar: player info + language toggle + profile -->
+            <div class="top-bar">
+
+                <!-- Avatar + name (clickable → profile) -->
+                <a href="profile.html" class="player-badge" id="player-name" title="View Profile">
+                    <span id="top-avatar">🎯</span>
+                    <span id="top-username">Player</span>
+                </a>
+
+                <div class="lang-switch">
+                    <button class="ls-btn active" id="ls-en" onclick="switchLang('en')">EN</button>
+                    <button class="ls-btn" id="ls-ta" onclick="switchLang('ta')">த</button>
+                </div>
+
+                <!-- Profile icon -->
+                <a href="profile.html" class="logout-btn" title="My Profile">👤</a>
+
+                <!-- Logout -->
+                <a href="#" class="logout-btn" id="btn-logout" title="Logout" onclick="doLogout()">⎋</a>
+            </div>
+
+            <ul class="word-display"></ul>
+            <h4 class="hint-text" id="hint-label">Hint: <b></b></h4>
+            <h4 class="guesses-text" id="guesses-label">Incorrect guesses: <b></b></h4>
+            <div class="keyboard"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
