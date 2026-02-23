@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEXORA – Word Duel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- Animated background particles -->
+    <div class="bg-particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="login-wrapper">
+
+        <!-- Language Toggle -->
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" id="btn-ta" onclick="setLang('ta')">தமிழ்</button>
+        </div>
+
+        <!-- ══════════════════ LOGIN CARD ══════════════════ -->
+        <div class="login-card" id="loginCard">
+
+            <div class="logo-area">
+                <div class="hangman-icon">🎯</div>
+                <h1 class="game-title" id="txt-title">LEXORA</h1>
+                <p class="game-subtitle" id="txt-subtitle">Guess the word. Beat the clock. Dominate!</p>
+            </div>
+
+            <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+
+                <div class="input-group">
+                    <label for="username" id="lbl-username">Username</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="username" name="username" placeholder="Enter your username"
+                            autocomplete="off" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password" id="lbl-password">Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <button type="button" class="eye-btn" onclick="togglePass('password', this)">👁️</button>
+                    </div>
+                    <!-- Password strength bar (shown during register) -->
+                    <div class="strength-wrap" id="strengthWrap" style="display:none">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-label" id="strengthLabel"></span>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span id="txt-remember">Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link" id="txt-forgot" onclick="showForgot()">Forgot password?</a>
+                </div>
+
+                <p class="error-msg" id="errorMsg"></p>
+
+                <button type="submit" class="login-btn" id="txt-loginbtn">
+                    <span id="btn-label-text">Login &amp; Play</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+                <div class="divider"><span id="txt-or">or</span></div>
+
+                <button type="button" class="guest-btn" onclick="guestLogin()" id="txt-guestbtn">
+                    Play as Guest
+                </button>
+
+            </form>
+
+            <p class="no-account">
+                <span id="txt-noaccount">Don't have an account?</span>
+                <a href="#" onclick="showRegister()" id="txt-register">Register</a>
+            </p>
+        </div>
+
+        <!-- ══════════════════ REGISTER CARD ══════════════════ -->
+        <div class="login-card" id="registerCard" style="display:none">
+
+            <div class="logo-area">
+                <div class="hangman-icon">📝</div>
+                <h1 class="game-title" id="reg-title">Create Account</h1>
+                <p class="game-subtitle" id="reg-subtitle">Set your own username &amp; password</p>
+            </div>
+
+            <form class="login-form" id="registerForm" onsubmit="handleRegister(event)">
+
+                <div class="input-group">
+                    <label id="reg-lbl-user">Username</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">👤</span>
+                        <input type="text" id="reg-username" placeholder="Choose a username" autocomplete="off" required
+                            minlength="3">
+                    </div>
+                    <small class="field-hint" id="reg-user-hint">At least 3 characters</small>
+                </div>
+
+                <div class="input-group">
+                    <label id="reg-lbl-pass">Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="reg-password" placeholder="Create your password"
+                            oninput="checkStrength(this.value)" required minlength="6">
+                        <button type="button" class="eye-btn" onclick="togglePass('reg-password', this)">👁️</button>
+                    </div>
+                    <!-- Strength meter -->
+                    <div class="strength-wrap">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="reg-strengthFill"></div>
+                        </div>
+                        <span class="strength-label" id="reg-strengthLabel">Type to check strength</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label id="reg-lbl-confirm">Confirm Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">✅</span>
+                        <input type="password" id="reg-confirm" placeholder="Repeat your password" required>
+                        <button type="button" class="eye-btn" onclick="togglePass('reg-confirm', this)">👁️</button>
+                    </div>
+                </div>
+
+                <p class="error-msg" id="regErrorMsg"></p>
+                <p class="success-msg" id="regSuccessMsg"></p>
+
+                <button type="submit" class="login-btn" id="reg-btn">
+                    <span id="reg-btn-text">Create Account</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+            </form>
+
+            <p class="no-account">
+                <span id="reg-already">Already have an account?</span>
+                <a href="#" onclick="showLogin()" id="reg-back">Back to Login</a>
+            </p>
+        </div>
+
+        <!-- Fun fact strip -->
+        <div class="fun-strip">
+            <span class="fun-icon">💡</span>
+            <span id="txt-funfact">Tip: The game has 100+ words across Tamil &amp; English categories!</span>
+        </div>
+    </div>
+
+    <script>
+        // ─── Language Strings ──────────────────────────────────────────────────────
+        const translations = {
+            en: {
+                title: "LEXORA",
+                subtitle: "Guess the word. Beat the clock. Dominate!",
+                username: "Username",
+                password: "Password",
+                remember: "Remember me",
+                forgot: "Forgot password?",
+                loginBtn: "Login & Play",
+                or: "or",
+                guestBtn: "Play as Guest",
+                noAccount: "Don't have an account?",
+                register: "Register",
+                funfact: "💡 Tip: The game has 100+ words across Tamil & English categories!",
+                userPH: "Enter your username",
+                passPH: "Enter your password",
+                errEmpty: "Please fill in all fields.",
+                errWrong: "Invalid username or password.",
+                welcome: "Welcome",
+                // Register
+                regTitle: "Create Account",
+                regSubtitle: "Set your own username & password",
+                regUser: "Username",
+                regPass: "Password",
+                regConfirm: "Confirm Password",
+                regBtn: "Create Account",
+                regBack: "Back to Login",
+                regAlready: "Already have an account?",
+                regUserHint: "At least 3 characters",
+                regUserPH: "Choose a username",
+                regPassPH: "Create your password",
+                regConfirmPH: "Repeat your password",
+                errMatch: "Passwords do not match.",
+                errTaken: "Username already exists. Choose another.",
+                errShort: "Password must be at least 6 characters.",
+                errUserShort: "Username must be at least 3 characters.",
+                successReg: "Account created! You can now login.",
+                // Forgot
+                forgotPrompt: "Enter your username to retrieve your password:",
+                forgotFound: (u, p) => `Your password for "${u}" is: ${p}`,
+                forgotNone: "No account found with that username.",
+                // Strength
+                weak: "Weak",
+                fair: "Fair",
+                good: "Good",
+                strong: "Strong",
+                typeCheck: "Type to check strength",
+            },
+            ta: {
+                title: "LEXORA",
+                subtitle: "வார்த்தையை யூகி. நேரத்தை வெல்லு. ஆதிக்கம் செலுத்து!",
+                username: "பயனர்பெயர்",
+                password: "கடவுச்சொல்",
+                remember: "என்னை நினைவில் வை",
+                forgot: "கடவுச்சொல் மறந்துவிட்டதா?",
+                loginBtn: "உள்நுழைந்து விளையாடு",
+                or: "அல்லது",
+                guestBtn: "விருந்தினராக விளையாடு",
+                noAccount: "கணக்கு இல்லையா?",
+                register: "பதிவு செய்க",
+                funfact: "💡 குறிப்பு: இந்த விளையாட்டில் தமிழ் மற்றும் ஆங்கில வகைகளில் 100+ வார்த்தைகள் உள்ளன!",
+                userPH: "உங்கள் பயனர்பெயரை உள்ளிடுங்கள்",
+                passPH: "உங்கள் கடவுச்சொல்லை உள்ளிடுங்கள்",
+                errEmpty: "அனைத்து புலங்களையும் நிரப்பவும்.",
+                errWrong: "தவறான பயனர்பெயர் அல்லது கடவுச்சொல்.",
+                welcome: "வரவேற்கிறோம்",
+                // Register
+                regTitle: "கணக்கு உருவாக்கு",
+                regSubtitle: "உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை அமைக்கவும்",
+                regUser: "பயனர்பெயர்",
+                regPass: "கடவுச்சொல்",
+                regConfirm: "கடவுச்சொல் உறுதிப்படுத்தல்",
+                regBtn: "கணக்கு உருவாக்கு",
+                regBack: "உள்நுழைவுக்கு திரும்பு",
+                regAlready: "ஏற்கனவே கணக்கு உள்ளதா?",
+                regUserHint: "குறைந்தது 3 எழுத்துகள்",
+                regUserPH: "பயனர்பெயரை தேர்வு செய்க",
+                regPassPH: "கடவுச்சொல்லை உருவாக்கவும்",
+                regConfirmPH: "கடவுச்சொல்லை மீண்டும் உள்ளிடவும்",
+                errMatch: "கடவுச்சொற்கள் பொருந்தவில்லை.",
+                errTaken: "பயனர்பெயர் ஏற்கனவே உள்ளது. வேறு ஒன்றை தேர்வு செய்க.",
+                errShort: "கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்.",
+                errUserShort: "பயனர்பெயர் குறைந்தது 3 எழுத்துகள் இருக்க வேண்டும்.",
+                successReg: "கணக்கு உருவாக்கப்பட்டது! இப்போது உள்நுழையலாம்.",
+                // Forgot
+                forgotPrompt: "கடவுச்சொல்லை பெற பயனர்பெயரை உள்ளிடவும்:",
+                forgotFound: (u, p) => `"${u}" இன் கடவுச்சொல்: ${p}`,
+                forgotNone: "அந்த பயனர்பெயருடன் கணக்கு இல்லை.",
+                // Strength
+                weak: "மிகவும் எளிது",
+                fair: "சாதாரணம்",
+                good: "நல்லது",
+                strong: "வலிமையானது",
+                typeCheck: "வலிமையைச் சரிபார்க்கவும்",
+            }
+        };
+
+        let currentLang = 'en';
+
+        // ─── Built-in demo users (fallback) ────────────────────────────────────────
+        const builtInUsers = [
+            { username: 'player', password: 'hangman123' },
+            { username: 'admin', password: 'admin@2025' }
+        ];
+
+        // ─── User storage helpers (localStorage) ───────────────────────────────────
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('hgUsers') || '[]');
+        }
+        function saveUsers(users) {
+            localStorage.setItem('hgUsers', JSON.stringify(users));
+        }
+        function findUser(uname, pass) {
+            // Check registered users first
+            const users = getUsers();
+            const reg = users.find(u => u.username === uname && u.password === pass);
+            if (reg) return reg;
+            // Fallback to built-in
+            return builtInUsers.find(u => u.username === uname && u.password === pass) || null;
+        }
+        function userExists(uname) {
+            const users = getUsers();
+            const inReg = users.some(u => u.username.toLowerCase() === uname.toLowerCase());
+            const inBuilt = builtInUsers.some(u => u.username.toLowerCase() === uname.toLowerCase());
+            return inReg || inBuilt;
+        }
+
+        // ─── Language switch ────────────────────────────────────────────────────────
+        function setLang(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            // Login card
+            set('txt-title', t.title);
+            set('txt-subtitle', t.subtitle);
+            set('lbl-username', t.username);
+            set('lbl-password', t.password);
+            set('txt-remember', t.remember);
+            set('txt-forgot', t.forgot);
+            set('txt-or', t.or);
+            set('txt-noaccount', t.noAccount);
+            set('txt-register', t.register);
+            set('txt-funfact', t.funfact);
+            set('txt-guestbtn', t.guestBtn);
+            set('btn-label-text', t.loginBtn);
+
+            // Placeholders
+            document.getElementById('username').placeholder = t.userPH;
+            document.getElementById('password').placeholder = t.passPH;
+
+            // Register card
+            set('reg-title', t.regTitle);
+            set('reg-subtitle', t.regSubtitle);
+            set('reg-lbl-user', t.regUser);
+            set('reg-lbl-pass', t.regPass);
+            set('reg-lbl-confirm', t.regConfirm);
+            set('reg-btn-text', t.regBtn);
+            set('reg-back', t.regBack);
+            set('reg-already', t.regAlready);
+            set('reg-user-hint', t.regUserHint);
+            set('reg-strengthLabel', t.typeCheck);
+
+            document.getElementById('reg-username').placeholder = t.regUserPH;
+            document.getElementById('reg-password').placeholder = t.regPassPH;
+            document.getElementById('reg-confirm').placeholder = t.regConfirmPH;
+
+            // Active toggle
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ta').classList.toggle('active', lang === 'ta');
+
+            // Font
+            document.body.style.fontFamily = lang === 'ta'
+                ? "'Noto Sans Tamil', sans-serif"
+                : "'Open Sans', sans-serif";
+
+            document.getElementById('errorMsg').innerText = '';
+            document.getElementById('regErrorMsg').innerText = '';
+        }
+
+        function set(id, val) {
+            const el = document.getElementById(id);
+            if (el) el.innerText = val;
+        }
+
+        // ─── Toggle password visibility ─────────────────────────────────────────────
+        function togglePass(inputId, btn) {
+            const inp = document.getElementById(inputId);
+            inp.type = inp.type === 'password' ? 'text' : 'password';
+            btn.innerText = inp.type === 'password' ? '👁️' : '🙈';
+        }
+
+        // ─── Password strength checker ──────────────────────────────────────────────
+        function checkStrength(val) {
+            const fill = document.getElementById('reg-strengthFill');
+            const label = document.getElementById('reg-strengthLabel');
+            const t = translations[currentLang];
+
+            if (!val) {
+                fill.style.width = '0%';
+                fill.style.background = '#e0e0e0';
+                label.innerText = t.typeCheck;
+                label.style.color = 'rgba(255,255,255,0.4)';
+                return;
+            }
+
+            let score = 0;
+            if (val.length >= 6) score++;
+            if (val.length >= 10) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+
+            const levels = [
+                { w: '25%', bg: '#e74c3c', lbl: t.weak },
+                { w: '50%', bg: '#f39c12', lbl: t.fair },
+                { w: '75%', bg: '#3498db', lbl: t.good },
+                { w: '100%', bg: '#27ae60', lbl: t.strong },
+            ];
+            const idx = Math.min(Math.floor((score / 5) * 4), 3);
+            const lv = levels[idx];
+
+            fill.style.width = lv.w;
+            fill.style.background = lv.bg;
+            label.innerText = lv.lbl;
+            label.style.color = lv.bg;
+        }
+
+        // ─── Handle Login ───────────────────────────────────────────────────────────
+        function handleLogin(e) {
+            e.preventDefault();
+            const t = translations[currentLang];
+            const uname = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const errEl = document.getElementById('errorMsg');
+
+            if (!uname || !pass) { errEl.innerText = t.errEmpty; shakeCard('loginCard'); return; }
+
+            const match = findUser(uname, pass);
+            if (!match) { errEl.innerText = t.errWrong; shakeCard('loginCard'); return; }
+
+            // Save session
+            if (document.getElementById('remember').checked) {
+                localStorage.setItem('hgPlayer', uname);
+            }
+            sessionStorage.setItem('hgPlayer', uname);
+
+            // Success feedback
+            const btn = document.getElementById('txt-loginbtn');
+            btn.style.background = '#27ae60';
+            document.getElementById('btn-label-text').innerText = `✅ ${t.welcome}, ${uname}!`;
+            setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        }
+
+        // ─── Guest Login ────────────────────────────────────────────────────────────
+        function guestLogin() {
+            sessionStorage.setItem('hgPlayer', 'Guest');
+            window.location.href = 'index.html';
+        }
+
+        // ─── Show Register card ─────────────────────────────────────────────────────
+        function showRegister() {
+            document.getElementById('loginCard').style.display = 'none';
+            document.getElementById('registerCard').style.display = 'block';
+            document.getElementById('regErrorMsg').innerText = '';
+            document.getElementById('regSuccessMsg').innerText = '';
+            document.getElementById('registerForm').reset();
+            document.getElementById('reg-strengthFill').style.width = '0%';
+            document.getElementById('reg-strengthLabel').innerText = translations[currentLang].typeCheck;
+        }
+
+        // ─── Show Login card ────────────────────────────────────────────────────────
+        function showLogin() {
+            document.getElementById('registerCard').style.display = 'none';
+            document.getElementById('loginCard').style.display = 'block';
+            document.getElementById('errorMsg').innerText = '';
+        }
+
+        // ─── Handle Register ────────────────────────────────────────────────────────
+        function handleRegister(e) {
+            e.preventDefault();
+            const t = translations[currentLang];
+            const uname = document.getElementById('reg-username').value.trim();
+            const pass = document.getElementById('reg-password').value;
+            const confirm = document.getElementById('reg-confirm').value;
+            const errEl = document.getElementById('regErrorMsg');
+            const sucEl = document.getElementById('regSuccessMsg');
+
+            errEl.innerText = '';
+            sucEl.innerText = '';
+
+            if (uname.length < 3) { errEl.innerText = t.errUserShort; shakeCard('registerCard'); return; }
+            if (pass.length < 6) { errEl.innerText = t.errShort; shakeCard('registerCard'); return; }
+            if (pass !== confirm) { errEl.innerText = t.errMatch; shakeCard('registerCard'); return; }
+            if (userExists(uname)) { errEl.innerText = t.errTaken; shakeCard('registerCard'); return; }
+
+            // Save new user
+            const users = getUsers();
+            users.push({ username: uname, password: pass });
+            saveUsers(users);
+
+            sucEl.innerText = t.successReg;
+
+            // Pre-fill login and switch back after 1.5s
+            setTimeout(() => {
+                document.getElementById('username').value = uname;
+                document.getElementById('password').value = '';
+                showLogin();
+            }, 1500);
+        }
+
+        // ─── Forgot password ────────────────────────────────────────────────────────
+        function showForgot() {
+            const t = translations[currentLang];
+            const uname = prompt(t.forgotPrompt);
+            if (!uname) return;
+
+            const users = getUsers();
+            const regUser = users.find(u => u.username.toLowerCase() === uname.trim().toLowerCase());
+            const builtIn = builtInUsers.find(u => u.username.toLowerCase() === uname.trim().toLowerCase());
+            const found = regUser || builtIn;
+
+            if (found) {
+                alert(t.forgotFound(found.username, found.password));
+            } else {
+                alert(t.forgotNone);
+            }
+        }
+
+        // ─── Shake animation ───────────────────────────────────────────────────────
+        function shakeCard(id) {
+            const el = document.getElementById(id);
+            el.classList.add('shake');
+            setTimeout(() => el.classList.remove('shake'), 500);
+        }
+
+        // ─── Auto-fill from localStorage ──────────────────────────────────────────
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('hgPlayer');
+            if (saved) {
+                document.getElementById('username').value = saved;
+                document.getElementById('remember').checked = true;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

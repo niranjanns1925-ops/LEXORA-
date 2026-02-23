@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile – LEXORA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ─── Reset ────────────────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px 40px;
+        }
+
+        /* ─── Top nav ──────────────────────────────────────────────────────── */
+        .top-nav {
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 9px 20px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+        }
+
+        /* ─── Card ─────────────────────────────────────────────────────────── */
+        .profile-card {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 36px 32px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ─── Avatar hero ──────────────────────────────────────────────────── */
+        .avatar-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .avatar-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5E63BA, #8286c9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.6rem;
+            box-shadow: 0 0 0 4px rgba(94, 99, 186, 0.35), 0 8px 30px rgba(94, 99, 186, 0.5);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+            user-select: none;
+        }
+
+        .avatar-ring:hover {
+            transform: scale(1.06);
+        }
+
+        .avatar-ring .edit-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: #5E63BA;
+            border: 2px solid #1a1a2e;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-tag {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 50px;
+            padding: 4px 14px;
+        }
+
+        /* ─── Avatar picker ────────────────────────────────────────────────── */
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .av-option {
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .av-option:hover {
+            background: rgba(94, 99, 186, 0.25);
+            border-color: #8286c9;
+            transform: scale(1.08);
+        }
+
+        .av-option.chosen {
+            background: rgba(94, 99, 186, 0.4);
+            border-color: #5E63BA;
+            box-shadow: 0 0 0 3px rgba(94, 99, 186, 0.3);
+            transform: scale(1.08);
+        }
+
+        /* ─── Username editor ──────────────────────────────────────────────── */
+        .edit-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .edit-row input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            padding: 12px 16px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .edit-row input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .edit-row input:focus {
+            border-color: #8286c9;
+            box-shadow: 0 0 0 3px rgba(94, 99, 186, 0.25);
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #5E63BA, #8286c9);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 12px 22px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(94, 99, 186, 0.5);
+        }
+
+        /* ─── Stats grid ───────────────────────────────────────────────────── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #8286c9;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        /* ─── Win rate bar ─────────────────────────────────────────────────── */
+        .win-rate-wrap {
+            margin-bottom: 32px;
+        }
+
+        .win-rate-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .win-rate-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .win-rate-fill {
+            height: 100%;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #5E63BA, #2ecc71);
+            transition: width 0.8s ease;
+        }
+
+        /* ─── Danger zone ──────────────────────────────────────────────────── */
+        .danger-zone {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .reset-btn {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(231, 76, 60, 0.12);
+            border: 1.5px solid rgba(231, 76, 60, 0.35);
+            border-radius: 12px;
+            color: #ff7675;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: rgba(231, 76, 60, 0.25);
+            border-color: #e74c3c;
+        }
+
+        .logout-big {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .logout-big:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        /* ─── Toast ────────────────────────────────────────────────────────── */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #27ae60;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ─── Divider ──────────────────────────────────────────────────────── */
+        .divider-line {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 0 0 24px;
+        }
+
+        /* ─── Responsive ───────────────────────────────────────────────────── */
+        @media (max-width: 500px) {
+            .profile-card {
+                padding: 24px 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Auth guard -->
+    <script>
+        if (!sessionStorage.getItem('hgPlayer')) window.location.replace('login.html');
+    </script>
+
+    <!-- Top nav -->
+    <nav class="top-nav">
+        <a class="back-btn" href="index.html">← Back to Game</a>
+        <span class="nav-title">LEXORA · MY PROFILE</span>
+        <span style="width:120px"></span><!-- spacer -->
+    </nav>
+
+    <!-- Profile card -->
+    <div class="profile-card">
+
+        <!-- Avatar hero -->
+        <div class="avatar-hero">
+            <div class="avatar-ring" id="avatarHero" onclick="scrollToAvatars()">
+                <span id="avatarDisplay">🎯</span>
+                <span class="edit-badge">✏️</span>
+            </div>
+            <div class="profile-name" id="heroName">Player</div>
+            <div class="profile-tag" id="heroTag">@hangman-player</div>
+        </div>
+
+        <!-- Username editor -->
+        <div class="section-title">Display Name</div>
+        <div class="edit-row">
+            <input type="text" id="nameInput" placeholder="Enter display name" maxlength="24">
+            <button class="save-btn" onclick="saveName()">Save</button>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <!-- Avatar picker -->
+        <div class="section-title" id="avatar-section">Choose Your Avatar</div>
+        <div class="avatar-grid" id="avatarGrid"></div>
+
+        <div class="divider-line"></div>
+
+        <!-- Game stats -->
+        <div class="section-title">Game Statistics</div>
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-icon">🎮</div>
+                <div class="stat-value" id="stat-played">0</div>
+                <div class="stat-label">Games Played</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value" id="stat-won">0</div>
+                <div class="stat-label">Wins</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💀</div>
+                <div class="stat-value" id="stat-lost">0</div>
+                <div class="stat-label">Losses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-value" id="stat-streak">0</div>
+                <div class="stat-label">Best Streak</div>
+            </div>
+        </div>
+
+        <!-- Win rate bar -->
+        <div class="win-rate-wrap">
+            <div class="win-rate-header">
+                <span>Win Rate</span>
+                <span id="win-pct">0%</span>
+            </div>
+            <div class="win-rate-bar">
+                <div class="win-rate-fill" id="win-fill" style="width:0%"></div>
+            </div>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <!-- Actions -->
+        <div class="section-title">Account</div>
+        <div class="danger-zone">
+            <button class="reset-btn" onclick="resetStats()">🗑️ Reset Stats</button>
+            <a class="logout-big" href="#" onclick="doLogout()">⎋ Logout</a>
+        </div>
+
+    </div>
+
+    <!-- Toast message -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ─── Avatar options ──────────────────────────────────────────────────
+        const AVATARS = [
+            '🎯', '🦊', '🐯', '🐸', '🦁', '🐧', '🦋', '🐉',
+            '🦄', '🐺', '🦅', '🐙', '🦊', '🎭', '👾', '🤖',
+            '🧙', '🧜', '🦸', '🥷', '🎪', '🌟', '🔥', '⚡',
+            '🍀', '🌈', '💎', '🎲', '🎮', '🏆', '🌙', '🌊'
+        ];
+
+        // ─── Storage helpers ──────────────────────────────────────────────────
+        const player = sessionStorage.getItem('hgPlayer') || localStorage.getItem('hgPlayer') || 'Player';
+
+        function getProfile() {
+            const key = 'hgProfile_' + player;
+            const def = { name: player, avatar: '🎯' };
+            return JSON.parse(localStorage.getItem(key) || JSON.stringify(def));
+        }
+        function saveProfile(obj) {
+            localStorage.setItem('hgProfile_' + player, JSON.stringify(obj));
+        }
+        function getStats() {
+            const key = 'hgStats_' + player;
+            const def = { played: 0, won: 0, lost: 0, streak: 0, bestStreak: 0 };
+            return JSON.parse(localStorage.getItem(key) || JSON.stringify(def));
+        }
+        function saveStats(obj) {
+            localStorage.setItem('hgStats_' + player, JSON.stringify(obj));
+        }
+
+        // ─── Render avatar grid ───────────────────────────────────────────────
+        const profile = getProfile();
+        let selectedAvatar = profile.avatar;
+
+        function renderAvatarGrid() {
+            const grid = document.getElementById('avatarGrid');
+            grid.innerHTML = '';
+            AVATARS.forEach(em => {
+                const div = document.createElement('div');
+                div.className = 'av-option' + (em === selectedAvatar ? ' chosen' : '');
+                div.textContent = em;
+                div.onclick = () => pickAvatar(em);
+                grid.appendChild(div);
+            });
+        }
+
+        function pickAvatar(em) {
+            selectedAvatar = em;
+            document.getElementById('avatarDisplay').textContent = em;
+            renderAvatarGrid();
+            const p = getProfile();
+            p.avatar = em;
+            saveProfile(p);
+            showToast('Avatar saved! ✨');
+        }
+
+        function scrollToAvatars() {
+            document.getElementById('avatar-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ─── Populate page ────────────────────────────────────────────────────
+        function populatePage() {
+            const p = getProfile();
+            const stats = getStats();
+
+            document.getElementById('avatarDisplay').textContent = p.avatar;
+            document.getElementById('heroName').textContent = p.name;
+            document.getElementById('heroTag').textContent = '@' + p.name.toLowerCase().replace(/\s+/g, '-');
+            document.getElementById('nameInput').value = p.name;
+
+            document.getElementById('stat-played').textContent = stats.played;
+            document.getElementById('stat-won').textContent = stats.won;
+            document.getElementById('stat-lost').textContent = stats.lost;
+            document.getElementById('stat-streak').textContent = stats.bestStreak;
+
+            const pct = stats.played > 0 ? Math.round((stats.won / stats.played) * 100) : 0;
+            document.getElementById('win-pct').textContent = pct + '%';
+            document.getElementById('win-fill').style.width = pct + '%';
+        }
+
+        // ─── Save name ────────────────────────────────────────────────────────
+        function saveName() {
+            const val = document.getElementById('nameInput').value.trim();
+            if (!val) return;
+            const p = getProfile();
+            p.name = val;
+            saveProfile(p);
+            document.getElementById('heroName').textContent = val;
+            document.getElementById('heroTag').textContent = '@' + val.toLowerCase().replace(/\s+/g, '-');
+            // Also update session player name
+            sessionStorage.setItem('hgPlayer', val);
+            localStorage.setItem('hgPlayer', val);
+            showToast('Name saved! 🙌');
+        }
+
+        // ─── Reset stats ──────────────────────────────────────────────────────
+        function resetStats() {
+            if (!confirm('Reset all your game statistics? This cannot be undone.')) return;
+            saveStats({ played: 0, won: 0, lost: 0, streak: 0, bestStreak: 0 });
+            populatePage();
+            showToast('Stats reset.');
+        }
+
+        // ─── Logout ───────────────────────────────────────────────────────────
+        function doLogout() {
+            sessionStorage.removeItem('hgPlayer');
+            window.location.href = 'login.html';
+        }
+
+        // ─── Toast ────────────────────────────────────────────────────────────
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2500);
+        }
+
+        // ─── Init ─────────────────────────────────────────────────────────────
+        renderAvatarGrid();
+        populatePage();
+    </script>
+
+</body>
+
+</html>
