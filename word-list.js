@@ -1,678 +1,698 @@
 const wordList = [
-    // ── Music ─────────────────────────────────────────────────────────────
-    {
-        word: "guitar",
-        hint: "A musical instrument with strings, played by strumming or plucking.",
-        hintTa: "நரம்புகளால் இசைக்கப்படும் ஒரு இசைக்கருவி."
-    },
-    {
-        word: "piano",
-        hint: "A musical instrument played by pressing keys that cause hammers to strike strings.",
-        hintTa: "விசைகளை அழுத்துவதன் மூலம் நரம்புகளை தட்டி இசைக்கும் கருவி."
-    },
-    {
-        word: "violin",
-        hint: "A bowed string instrument with four strings, smallest in the violin family.",
-        hintTa: "வில்லால் இசைக்கப்படும் நான்கு நரம்புகள் கொண்ட சிறிய இசைக்கருவி."
-    },
-    {
-        word: "trumpet",
-        hint: "A brass wind instrument with a flared bell, played by buzzing lips.",
-        hintTa: "உதட்டால் ஊதி இசைக்கும் ஒரு வெண்கல காற்று இசைக்கருவி."
-    },
-    {
-        word: "flute",
-        hint: "A woodwind instrument played by blowing across a hole near one end.",
-        hintTa: "ஒரு துளையில் ஊதி இசைக்கும் மரக்காற்று இசைக்கருவி."
-    },
-    {
-        word: "drums",
-        hint: "A percussion instrument played by striking with sticks or hands.",
-        hintTa: "குச்சிகள் அல்லது கைகளால் தட்டி இசைக்கும் தாள இசைக்கருவி."
-    },
-    {
-        word: "melody",
-        hint: "A sequence of musical notes that forms a recognizable tune.",
-        hintTa: "இசை குறிப்புகளின் தொடர்; ஒரு அழகான ஈர்க்கும் இசை வரிசை."
-    },
-    {
-        word: "rhythm",
-        hint: "A strong, regular repeated pattern of sound or movement in music.",
-        hintTa: "இசையில் ஒழுங்கான மீண்டும் மீண்டும் வரும் ஒலி அலை அமைப்பு."
-    },
-    {
-        word: "ballet",
-        hint: "A classical dance form characterized by precise and graceful movements.",
-        hintTa: "நுட்பமான மற்றும் கம்பீரமான அசைவுகளால் கூடிய கிளாசிக்கல் நடன வடிவம்."
-    },
-    {
-        word: "orchestra",
-        hint: "A large ensemble of musicians playing various instruments together.",
-        hintTa: "பல்வேறு இசைக்கருவிகளை வாசிக்கும் பெரிய இசைக் குழு."
-    },
-    {
-        word: "symphony",
-        hint: "A long musical composition for a full orchestra, typically in multiple movements.",
-        hintTa: "முழு இசைக்குழுவுக்காக எழுதப்பட்ட நீண்ட இசை நூல்."
-    },
-    {
-        word: "jazz",
-        hint: "A music genre characterized by improvisation, swing rhythms, and syncopation.",
-        hintTa: "கூத்துக் கட்டுப்பாடு இல்லாத தனிப்பட்ட இசை கலைஞர்களால் உருவாக்கப்பட்ட இசை வகை."
-    },
-
-    // ── Science & Nature ──────────────────────────────────────────────────
-    {
-        word: "oxygen",
-        hint: "A colorless, odorless gas essential for breathing and life.",
-        hintTa: "மணமற்ற, நிறமற்ற, உயிர்வாழ அவசியமான வாயு."
-    },
-    {
-        word: "gravity",
-        hint: "The natural force that pulls objects toward the center of the Earth.",
-        hintTa: "பொருட்களை பூமியின் மையத்தை நோக்கி இழுக்கும் இயற்கை சக்தி."
-    },
-    {
-        word: "volcano",
-        hint: "A mountain with a vent through which lava, gas, and ash are ejected.",
-        hintTa: "எரிமலை: குழம்பு, வாயு மற்றும் சாம்பல் வெளியேறும் மலை."
-    },
-    {
-        word: "earthquake",
-        hint: "A sudden violent shaking of the ground caused by tectonic plate movement.",
-        hintTa: "தட்டோலை அசைவால் ஏற்படும் திடீர் நில அதிர்வு."
-    },
-    {
-        word: "tornado",
-        hint: "A rapidly rotating column of air extending from a thunderstorm to the ground.",
-        hintTa: "புயலிலிருந்து தரை வரை நீண்டு வரும் சுழலும் காற்று நெடுவரிசை."
-    },
-    {
-        word: "lightning",
-        hint: "A natural electrostatic discharge that flashes during a thunderstorm.",
-        hintTa: "மழைப் புயலின் போது தோன்றும் இயற்கையான மின்னல் வெளியேற்றம்."
-    },
-    {
-        word: "photosynthesis",
-        hint: "The process plants use to convert sunlight, CO₂, and water into food.",
-        hintTa: "தாவரங்கள் சூரிய ஒளியை பயன்படுத்தி உணவை தயாரிக்கும் செயல்முறை."
-    },
-    {
-        word: "evolution",
-        hint: "The process by which species change gradually over many generations.",
-        hintTa: "உயிரினங்கள் பல தலைமுறைகளில் படிப்படியாக மாறும் செயல்முறை."
-    },
-    {
-        word: "nucleus",
-        hint: "The central part of an atom, containing protons and neutrons.",
-        hintTa: "அணுவின் மையப் பகுதி; புரோட்டான்கள் மற்றும் நியூட்ரான்களைக் கொண்டது."
-    },
-    {
-        word: "molecule",
-        hint: "The smallest unit of a chemical compound, made of two or more atoms bonded together.",
-        hintTa: "இரண்டு அல்லது அதிக அணுக்கள் இணைந்து உருவாகும் வேதியியல் கலவையின் சிறிய அலகு."
-    },
-    {
-        word: "ecosystem",
-        hint: "A community of organisms interacting with each other and the environment.",
-        hintTa: "உயிரினங்களும் சுற்றுச்சூழலும் தொடர்பு கொள்ளும் ஒரு உயிரியல் சமுதாயம்."
-    },
-    {
-        word: "bacteria",
-        hint: "Microscopic single-celled organisms found virtually everywhere on Earth.",
-        hintTa: "பூமியில் எங்கும் காணப்படும் நுண்ணிய ஒற்றை செல் உயிரினங்கள்."
-    },
-    {
-        word: "hibernate",
-        hint: "A state of inactivity and reduced metabolism during cold months, common in bears.",
-        hintTa: "குளிர்காலத்தில் உறக்க நிலையில் கழிக்கும் விலங்குகளின் நடத்தை (கரடிகளில் பொதுவானது)."
-    },
-
-    // ── Space & Astronomy ─────────────────────────────────────────────────
-    {
-        word: "galaxy",
-        hint: "A vast system of stars, gas, and dust held together by gravity.",
-        hintTa: "ஈர்ப்பு விசையால் ஒன்றாக தொகுக்கப்பட்ட பிரபஞ்சத்தில் உள்ள பெரிய நட்சத்திர அமைப்பு."
-    },
-    {
-        word: "universe",
-        hint: "All of space, time, matter, and energy that exists.",
-        hintTa: "இருக்கும் அனைத்து வெளி, நேரம், பொருள் மற்றும் ஆற்றலை உள்ளடக்கிய மொத்த பிரபஞ்சம்."
-    },
-    {
-        word: "asteroid",
-        hint: "A small rocky body that orbits the Sun, mostly found in the asteroid belt.",
-        hintTa: "சூரியனை சுற்றி வரும் சிறிய கல் உடல்; பெரும்பாலும் சிறுகோள் பட்டையில் காணப்படும்."
-    },
-    {
-        word: "nebula",
-        hint: "A vast cloud of gas and dust in space, often where new stars are born.",
-        hintTa: "விண்வெளியில் உள்ள வாயு மற்றும் தூசியின் பேரளவு மேகம்; புதிய நட்சத்திரங்கள் பிறக்கும் இடம்."
-    },
-    {
-        word: "comet",
-        hint: "An icy space object that develops a glowing tail when near the Sun.",
-        hintTa: "சூரியனை நெருங்கும்போது ஒளிரும் வால் உருவாக்கும் பனி விண்வெளி பொருள்."
-    },
-    {
-        word: "telescope",
-        hint: "An optical instrument used to observe distant stars and galaxies.",
-        hintTa: "தொலைதூர நட்சத்திரங்கள் மற்றும் விண்மீன் திரள்களை பார்க்கும் கருவி."
-    },
-    {
-        word: "astronaut",
-        hint: "A person trained to travel and work in outer space.",
-        hintTa: "வெளி விண்வெளியில் பயணிக்கவும் பணிபுரியவும் பயிற்சி பெற்ற நபர்."
-    },
-    {
-        word: "supernova",
-        hint: "A powerful stellar explosion that briefly outshines an entire galaxy.",
-        hintTa: "ஒரு நட்சத்திரத்தின் பேரளவு வெடிப்பு; சுருகிய நேரத்தில் முழு விண்மீன் திரளையும் விட பிரகாசமாக ஒளிரும்."
-    },
-    {
-        word: "blackhole",
-        hint: "A region in space where gravity is so strong that even light cannot escape.",
-        hintTa: "விண்வெளியில் ஈர்ப்பு மிகவும் வலிமையான இடம்; ஒளி கூட தப்பிக்க முடியாது."
-    },
-    {
-        word: "planet",
-        hint: "A large celestial body that orbits a star and does not produce its own light.",
-        hintTa: "ஒரு நட்சத்திரத்தை சுற்றி வரும் பெரிய வான்பொருள்; சொந்த ஒளி இல்லாதது."
-    },
-    {
-        word: "moonlight",
-        hint: "The light reflected by the Moon onto the Earth from the Sun.",
-        hintTa: "சூரியனிடமிருந்து சந்திரன் பூமியின் மீது பிரதிபலிக்கும் ஒளி; நிலவொளி."
-    },
-    {
-        word: "astronomy",
-        hint: "The scientific study of celestial objects, space, and the universe.",
-        hintTa: "வான்பொருட்கள், விண்வெளி மற்றும் பிரபஞ்சத்தை ஆய்வு செய்யும் அறிவியல் துறை."
-    },
-
-    // ── Geography ─────────────────────────────────────────────────────────
-    {
-        word: "mountain",
-        hint: "A large natural elevation of the Earth's surface rising high above surrounding land.",
-        hintTa: "பூமியின் மேற்பரப்பில் உயர்ந்து நிற்கும் பெரிய இயற்கை நிலத்தோற்றம்; மலை."
-    },
-    {
-        word: "waterfall",
-        hint: "A cascade of water falling from a height, often over a rock or cliff.",
-        hintTa: "நீர் உயர இடத்திலிருந்து கீழே விழும் இயற்கை நீர்வீழ்ச்சி."
-    },
-    {
-        word: "rainforest",
-        hint: "A dense tropical forest with very high annual rainfall and immense biodiversity.",
-        hintTa: "அதிக மழைப்பொழிவு மற்றும் பன்முக உயிரினங்களைக் கொண்ட அடர்ந்த வெப்பமண்டல காடு."
-    },
-    {
-        word: "desert",
-        hint: "A barren, arid land that receives very little or no rainfall.",
-        hintTa: "மிகக் குறைவான அல்லது மழையே இல்லாத வறண்ட நிலப்பரப்பு; பாலைவனம்."
-    },
-    {
-        word: "glacier",
-        hint: "A large, slowly moving mass of ice formed from compacted snow over many years.",
-        hintTa: "பல ஆண்டுகளாக சேர்ந்த பனியிலிருந்து உருவாகும் மெதுவாக நகரும் பெரிய பனிப்பாறை."
-    },
-    {
-        word: "peninsula",
-        hint: "A piece of land almost entirely surrounded by water but connected to mainland.",
-        hintTa: "மூன்று பக்கங்களும் நீரால் சூழப்பட்டு ஒரு பக்கம் நிலத்துடன் இணைந்த நிலப்பிரிவு; தீபகற்பம்."
-    },
-    {
-        word: "archipelago",
-        hint: "A group or chain of islands scattered in a sea or ocean.",
-        hintTa: "கடலில் சிதறிக் கிடக்கும் தீவுகளின் குழு அல்லது சங்கிலி."
-    },
-    {
-        word: "river",
-        hint: "A large natural stream of water that flows into the sea, a lake, or another river.",
-        hintTa: "கடல், ஏரி அல்லது மற்றொரு நதியில் கலக்கும் இயற்கையான நீர் ஓடை; நதி."
-    },
-    {
-        word: "valley",
-        hint: "A low-lying area of land between hills or mountains, often with a river.",
-        hintTa: "மலைகள் அல்லது குன்றுகளுக்கிடையில் உள்ள தாழ்வான நிலப்பரப்பு; பள்ளத்தாக்கு."
-    },
-    {
-        word: "oasis",
-        hint: "A fertile green spot in a desert where underground water is found.",
-        hintTa: "பாலைவனத்தில் நீர் கிடைக்கும் பசுமையான வளமான இடம்."
-    },
-    {
-        word: "tsunami",
-        hint: "A series of large ocean waves caused by an undersea earthquake or explosion.",
-        hintTa: "கடலடி நிலநடுக்கம் அல்லது வெடிப்பால் ஏற்படும் பெரிய கடல் அலை; சுனாமி."
-    },
-
-    // ── Art & Culture ─────────────────────────────────────────────────────
-    {
-        word: "painting",
-        hint: "An art form where colors are applied on a surface to create images.",
-        hintTa: "ஒரு மேற்பரப்பில் வண்ணங்களை தடவி படங்கள் உருவாக்கும் கலை வடிவம்; ஓவியம்."
-    },
-    {
-        word: "sculpture",
-        hint: "A three-dimensional work of art created by carving or shaping materials.",
-        hintTa: "மண், கல் அல்லது உலோகத்தை வடிவமைத்து உருவாக்கும் முப்பரிமாண கலை; சிற்பம்."
-    },
-    {
-        word: "architecture",
-        hint: "The art and science of designing and constructing buildings and structures.",
-        hintTa: "கட்டிடங்களை வடிவமைக்கும் மற்றும் கட்டும் கலை மற்றும் அறிவியல்; கட்டடக்கலை."
-    },
-    {
-        word: "photography",
-        hint: "The art of capturing images by recording light with a camera.",
-        hintTa: "ஒளியை பதிவு செய்து படங்கள் எடுக்கும் கலை; புகைப்படக்கலை."
-    },
-    {
-        word: "theater",
-        hint: "A place or medium where plays, drama, and performances are staged.",
-        hintTa: "நாடகங்கள் மற்றும் நிகழ்ச்சிகள் நடக்கும் இடம் அல்லது ஊடகம்; அரங்கம்."
-    },
-    {
-        word: "museum",
-        hint: "A building exhibiting objects of historical, scientific, or artistic importance.",
-        hintTa: "வரலாற்று, அறிவியல் அல்லது கலை முக்கியத்துவம் வாய்ந்த பொருட்களை காட்டும் கட்டிடம்; அருங்காட்சியகம்."
-    },
-    {
-        word: "festival",
-        hint: "A special celebration with cultural or religious significance, often held annually.",
-        hintTa: "கலாச்சார அல்லது மத முக்கியத்துவம் வாய்ந்த சிறப்பு கொண்டாட்டம்; திருவிழா."
-    },
-    {
-        word: "heritage",
-        hint: "Cultural traditions and values passed down from previous generations.",
-        hintTa: "முன்பு தலைமுறைகளிலிருந்து கடந்து வந்த கலாச்சார மரபுகள் மற்றும் மதிப்புகள்."
-    },
-
-    // ── Technology ────────────────────────────────────────────────────────
-    {
-        word: "technology",
-        hint: "The application of scientific knowledge for practical, real-world purposes.",
-        hintTa: "நடைமுறை குறிக்கோள்களுக்கு அறிவியல் அறிவைப் பயன்படுத்துதல்; தொழில்நுட்பம்."
-    },
-    {
-        word: "internet",
-        hint: "A global network connecting billions of computers and devices worldwide.",
-        hintTa: "உலகம் முழுவதும் கோடிக்கணக்கான கணினிகளை இணைக்கும் உலகளாவிய வலைப்பின்னல்; இணையம்."
-    },
-    {
-        word: "algorithm",
-        hint: "A step-by-step set of instructions for solving a problem or completing a task.",
-        hintTa: "ஒரு சிக்கலை தீர்க்க அல்லது பணியை முடிக்க படிப்படியான வழிமுறை."
-    },
-    {
-        word: "software",
-        hint: "Programs and operating information that tell a computer what to do.",
-        hintTa: "கணினியை இயக்கவும் பணிகளை செய்யவும் உதவும் நிரல்கள்; மென்பொருள்."
-    },
-    {
-        word: "database",
-        hint: "An organized collection of structured information stored and accessed electronically.",
-        hintTa: "மின்னணு முறையில் சேமிக்கப்பட்ட ஒழுங்கமைக்கப்பட்ட தரவுகளின் தொகுப்பு."
-    },
-    {
-        word: "encryption",
-        hint: "The process of converting data into a coded form to prevent unauthorized access.",
-        hintTa: "தரவை குறியாக்கப்பட்ட வடிவமாக மாற்றி அங்கீகரிக்கப்படாத அணுகலை தடுக்கும் செயல்முறை."
-    },
-    {
-        word: "keyboard",
-        hint: "An input device with keys used to type text and commands into a computer.",
-        hintTa: "கணினியில் எழுத்துக்கள் மற்றும் கட்டளைகளை தட்டச்சு செய்ய பயன்படும் உள்ளீட்டு சாதனம்."
-    },
-    {
-        word: "camera",
-        hint: "A device used to capture and record still images or video.",
-        hintTa: "நிலையான படங்கள் அல்லது வீடியோவை படிமங்களாக பதிவு செய்யும் சாதனம்; கேமரா."
-    },
-    {
-        word: "telephone",
-        hint: "A device that transmits spoken sound over long distances using electrical signals.",
-        hintTa: "மின் சமிக்ஞைகள் மூலம் தொலைதூரத்தில் குரல் அனுப்பும் சாதனம்; தொலைபேசி."
-    },
-
-    // ── Food & Drinks ─────────────────────────────────────────────────────
-    {
-        word: "chocolate",
-        hint: "A sweet treat made from roasted and ground cacao seeds.",
-        hintTa: "வறுத்த கேக்கோ விதைகளிலிருந்து தயாரிக்கப்படும் இனிப்பு உணவு; சாக்லேட்."
-    },
-    {
-        word: "pizza",
-        hint: "An Italian savory dish with a round flat dough base covered with toppings.",
-        hintTa: "இத்தாலிய வகை வட்டமான மாவு தளத்தில் சேர்க்கைகளுடன் தயாரிக்கும் சுவையான உணவு."
-    },
-    {
-        word: "coffee",
-        hint: "A popular caffeinated drink brewed from roasted coffee beans.",
-        hintTa: "வறுத்த காபி விதைகளிலிருந்து காய்ச்சப்படும் காஃபின் நிறைந்த பிரபலமான பானம்."
-    },
-    {
-        word: "mango",
-        hint: "A juicy tropical fruit with yellow-orange flesh, called the 'king of fruits'.",
-        hintTa: "பழங்களின் ராஜா என அழைக்கப்படும் மஞ்சள்-ஆரஞ்சு சதை கொண்ட சாறு நிறைந்த வெப்பமண்டல பழம்; மாம்பழம்."
-    },
-    {
-        word: "biryani",
-        hint: "A fragrant mixed rice dish from the Indian subcontinent made with spices and meat.",
-        hintTa: "இந்திய துணைக்கண்டத்தில் தோன்றிய, மசாலா மற்றும் இறைச்சியுடன் சமைக்கப்படும் வாசனையான கலந்த சோறு."
-    },
-    {
-        word: "lemonade",
-        hint: "A cold sweet drink made with lemon juice, water, and sugar.",
-        hintTa: "எலுமிச்சை சாறு, நீர் மற்றும் சர்க்கரையால் தயாரிக்கப்படும் குளிர் இனிப்பு பானம்."
-    },
-    {
-        word: "cinnamon",
-        hint: "A warm spice from tree bark, widely used in baking and cooking.",
-        hintTa: "மரத்தின் உரியிலிருந்து பெறப்படும் வெப்பமான மசாலா; சமையல் மற்றும் பேக்கிங்கில் பரவலாக பயன்படுகிறது."
-    },
-    {
-        word: "saffron",
-        hint: "The world's most expensive spice, derived from the Crocus flower.",
-        hintTa: "உலகிலேயே மிக விலையுயர்ந்த மசாலா; குங்குமப்பூ செடியிலிருந்து பெறப்படுகிறது."
-    },
-
-    // ── Animals ───────────────────────────────────────────────────────────
-    {
-        word: "butterfly",
-        hint: "A colorful insect that transforms from a caterpillar through metamorphosis.",
-        hintTa: "கொழு கொழு புழுவிலிருந்து உருமாற்றம் அடையும் வண்ணமயமான பூச்சி; வண்ணாத்திப்பூச்சி."
-    },
-    {
-        word: "dolphin",
-        hint: "A highly intelligent marine mammal known for its friendly behavior and echolocation.",
-        hintTa: "நட்புணர்வு மற்றும் எதிரொலி கண்டறிதலுக்கு பெயர் பெற்ற அறிவுக்கூர்மையான கடல் பாலூட்டி; டால்பின்."
-    },
-    {
-        word: "elephant",
-        hint: "The largest land animal on Earth, with a trunk, large ears, and long tusks.",
-        hintTa: "பூமியில் உள்ள மிகப்பெரிய நில விலங்கு; தும்பிக்கை, பெரிய காதுகள் மற்றும் தந்தங்களை கொண்டது; யானை."
-    },
-    {
-        word: "cheetah",
-        hint: "The fastest land animal, capable of speeds up to 70 mph.",
-        hintTa: "மணிக்கு 112 கி.மீ வரை ஓடக்கூடிய பூமியிலேயே வேகமான நிலப் விலங்கு; சீட்டா."
-    },
-    {
-        word: "penguin",
-        hint: "A flightless seabird of the Southern Hemisphere, recognized by its black-white markings.",
-        hintTa: "தென் அரைக்கோளத்தில் வாழும் பறக்க முடியாத கடல் பறவை; கருப்பு-வெள்ளை தோற்றம்; பென்குயின்."
-    },
-    {
-        word: "crocodile",
-        hint: "A large semi-aquatic reptile with powerful jaws found in tropical regions.",
-        hintTa: "வெப்பமண்டல பகுதிகளில் காணப்படும் சக்திவாய்ந்த தாடை கொண்ட பெரிய ஊர்வன; முதலை."
-    },
-    {
-        word: "chameleon",
-        hint: "A lizard famous for changing its skin color to blend with surroundings.",
-        hintTa: "சுற்றுச்சூழலுடன் கலக்க தோலின் நிறத்தை மாற்றும் பல்லி வகை; பச்சோந்தி."
-    },
-    {
-        word: "porcupine",
-        hint: "A rodent covered in sharp hollow quills used for self-defense.",
-        hintTa: "பாதுகாப்புக்காக கூர்மையான முட்களால் மூடப்பட்ட கொறிக்கும் விலங்கு; முள்ளம்பன்றி."
-    },
-    {
-        word: "sunflower",
-        hint: "A tall plant with a large bright-yellow flower head that follows the Sun.",
-        hintTa: "சூரியனை நோக்கி திரும்பும் பெரிய மஞ்சள் மலர் தலை கொண்ட உயரமான தாவரம்; சூரியகாந்தி."
-    },
-
-    // ── Sports ────────────────────────────────────────────────────────────
-    {
-        word: "football",
-        hint: "A team sport where players kick a spherical ball to score goals.",
-        hintTa: "இரு அணிகளும் கோலிட வட்ட பந்தை உதைத்து விளையாடும் விளையாட்டு; கால்பந்து."
-    },
-    {
-        word: "cricket",
-        hint: "A bat-and-ball sport played between two teams of eleven on an oval field.",
-        hintTa: "பதினொரு வீரர்கள் கொண்ட இரு அணிகள் ஓவல் மைதானத்தில் விளையாடும் பந்து-மட்டை விளையாட்டு; கிரிக்கெட்."
-    },
-    {
-        word: "badminton",
-        hint: "A racquet sport played with a shuttlecock over a net, popular across Asia.",
-        hintTa: "வலையின் குறுக்கே கோழி ஈர்ப்பியை வீசி விளையாடும் ராக்கெட் விளையாட்டு; பேட்மிண்டன்."
-    },
-    {
-        word: "swimming",
-        hint: "The sport of propelling the body through water using arms and legs.",
-        hintTa: "கைகள் மற்றும் கால்களால் உடலை நீரில் நகர்த்தி செல்லும் விளையாட்டு; நீச்சல்."
-    },
-    {
-        word: "marathon",
-        hint: "A long-distance running race of 42.195 km (26.2 miles).",
-        hintTa: "42.195 கி.மீ. தூரம் ஓடும் நீண்ட தூர ஓட்டப் பந்தயம்; மாரத்தான்."
-    },
-    {
-        word: "gymnastics",
-        hint: "A sport involving balance, strength, flexibility, and coordinated body movements.",
-        hintTa: "சமநிலை, வலிமை, நெகிழ்வுத்தன்மை மற்றும் ஒருங்கிணைந்த உடல் அசைவுகளை உள்ளடக்கிய விளையாட்டு."
-    },
-    {
-        word: "archery",
-        hint: "The sport or practice of shooting arrows at a target using a bow.",
-        hintTa: "வில் கொண்டு இலக்கை நோக்கி அம்புகளை எய்யும் விளையாட்டு; வில்வித்தை."
-    },
-
-    // ── History & Society ─────────────────────────────────────────────────
-    {
-        word: "history",
-        hint: "The study of past human events, civilizations, and developments.",
-        hintTa: "கடந்த கால மனித நிகழ்வுகள், நாகரிகங்கள் மற்றும் வளர்ச்சியை ஆய்வு செய்யும் துறை; வரலாறு."
-    },
-    {
-        word: "democracy",
-        hint: "A system of government where power is held by the people through free elections.",
-        hintTa: "சுதந்திர தேர்தல்கள் மூலம் மக்களால் அதிகாரம் கொண்டிருக்கும் ஆட்சி முறை; மக்களாட்சி."
-    },
-    {
-        word: "revolution",
-        hint: "A dramatic change in political power or social conditions often achieved by force.",
-        hintTa: "அரசியல் அதிகாரம் அல்லது சமூக நிலைமைகளில் மிகப் பெரிய மாற்றம்; புரட்சி."
-    },
-    {
-        word: "civilization",
-        hint: "An advanced stage of human society with culture, cities, and organized systems.",
-        hintTa: "கலாச்சாரம், நகரங்கள் மற்றும் ஒழுங்கமைக்கப்பட்ட அமைப்புகளுடன் கூடிய மேம்பட்ட மனித சமுதாயம்."
-    },
-    {
-        word: "parliament",
-        hint: "The supreme legislative body that makes laws in many countries.",
-        hintTa: "பல நாடுகளில் சட்டங்களை இயற்றும் உச்ச சட்டமன்ற அமைப்பு; நாடாளுமன்றம்."
-    },
-
-    // ── Everyday & Vocabulary ─────────────────────────────────────────────
-    {
-        word: "bicycle",
-        hint: "A two-wheeled, pedal-powered vehicle for personal transport.",
-        hintTa: "கால்களால் மிதித்து இயக்கும் இரண்டு சக்கரங்கள் கொண்ட வாகனம்; மிதிவண்டி."
-    },
-    {
-        word: "vacation",
-        hint: "A period of time taken off work for rest, travel, and relaxation.",
-        hintTa: "ஓய்வு, பயணம் மற்றும் மகிழ்ச்சிக்காக வேலையிலிருந்து விலகும் நேரம்; விடுமுறை."
-    },
-    {
-        word: "diamond",
-        hint: "The hardest natural mineral on Earth, a sparkling precious gemstone.",
-        hintTa: "பூமியில் உள்ள மிகவும் கடினமான இயற்கை கனிமம்; மதிப்பு வாய்ந்த விலைமதிப்பற்ற கல்; வைரம்."
-    },
-    {
-        word: "rainbow",
-        hint: "A colorful arc in the sky formed by reflection and refraction of sunlight through rain.",
-        hintTa: "மழைத்துளிகள் வழியாக சூரிய ஒளி பட்டு உருவாகும் வண்ணமயமான வானவில்."
-    },
-    {
-        word: "sunset",
-        hint: "The daily event when the Sun disappears below the western horizon.",
-        hintTa: "தினமும் மேற்கு அடிவானத்தில் சூரியன் மறையும் நேர தோற்றம்; சூரிய அஸ்தமனம்."
-    },
-    {
-        word: "language",
-        hint: "A structured system of communication using words, grammar, and signs.",
-        hintTa: "வார்த்தைகள், இலக்கணம் மற்றும் குறியீடுகளால் ஆன தொடர்பு அமைப்பு; மொழி."
-    },
-    {
-        word: "breeze",
-        hint: "A gentle, light, and refreshing wind.",
-        hintTa: "இதமான, லேசான மற்றும் புத்துணர்வூட்டும் காற்று; தென்றல்."
-    },
-    {
-        word: "safari",
-        hint: "An overland trip to observe and photograph wildlife in their natural habitat.",
-        hintTa: "விலங்குகளை அவற்றின் இயற்கை வாழிடத்தில் கண்டு ரசிக்கும் பயணம்; சஃபாரி."
-    },
-    {
-        word: "novel",
-        hint: "A long, fictional prose story with a complex plot and developed characters.",
-        hintTa: "சிக்கலான கதை மற்றும் ஆழமான பாத்திரங்களை கொண்ட நீண்ட கட்டுக்கதை; நாவல்."
-    },
-    {
-        word: "science",
-        hint: "The systematic study of the physical and natural world through observation and experiment.",
-        hintTa: "கவனிப்பு மற்றும் சோதனை மூலம் இயற்கை மற்றும் உடல் உலகை ஆய்வு செய்யும் முறை; அறிவியல்."
-    },
-    {
-        word: "dance",
-        hint: "A rhythmic movement of the body, usually performed in time to music.",
-        hintTa: "இசைக்கு ஏற்ப உடலை தாளமாக அசைக்கும் கலை; நடனம்."
-    },
-    {
-        word: "adventure",
-        hint: "An exciting, daring, and unusual experience often involving risk.",
-        hintTa: "ஆபத்தும் உற்சாகமும் கலந்த அசாதாரண அனுபவம்; சாகசம்."
-    },
-    {
-        word: "freedom",
-        hint: "The power to act, speak, or think as one wishes without restraint.",
-        hintTa: "தடையின்றி செயல்பட, பேச அல்லது நினைக்கும் உரிமை; சுதந்திரம்."
-    },
-    {
-        word: "courage",
-        hint: "The ability to face fear, danger, or difficulty with bravery and determination.",
-        hintTa: "பயம், ஆபத்து அல்லது சிரமத்தை தைரியமாக எதிர்கொள்ளும் ஆற்றல்; தைரியம்."
-    },
-    {
-        word: "wisdom",
-        hint: "The quality of having good judgment gained through knowledge and experience.",
-        hintTa: "அறிவும் அனுபவமும் சேர்ந்து தரும் நல்ல நிதானமான சிந்தனை; ஞானம்."
-    },
-    {
-        word: "patience",
-        hint: "The ability to wait calmly or tolerate delays and problems without getting upset.",
-        hintTa: "தாமதங்கள் மற்றும் சிக்கல்களை கோபமில்லாமல் அமைதியாக தாங்கும் ஆற்றல்; பொறுமை."
-    },
-    {
-        word: "nostalgia",
-        hint: "A sentimental longing for past times, places, or experiences.",
-        hintTa: "கடந்த காலத்தை நினைத்து ஏங்கும் உணர்வு; இறந்த காலத்தின் மீதான கவலையான ஆசை."
-    },
-    {
-        word: "curiosity",
-        hint: "A strong desire to learn or know something new or unusual.",
-        hintTa: "புதிய அல்லது அசாதாரண ஒன்றை தெரிந்துகொள்ள விரும்பும் உத்வேகம்; ஆர்வம்."
-    },
-    {
-        word: "illusion",
-        hint: "A false impression that deceives the eyes or the mind.",
-        hintTa: "கண்களையோ மனதையோ ஏமாற்றும் பொய்யான தோற்றம்; மாயை."
-    },
-    {
-        word: "paradox",
-        hint: "A statement that seems to contradict itself but may still be true.",
-        hintTa: "தன்னையே முரண்படுத்துவது போல் தோன்றும் ஆனால் உண்மையாக இருக்கக்கூடிய கூற்று."
-    },
-    {
-        word: "enigma",
-        hint: "Something mysterious, puzzling, and difficult to understand.",
-        hintTa: "புரிந்துகொள்ள கடினமான மர்மமான மற்றும் புதிரான ஒன்று."
-    },
-    {
-        word: "vibrant",
-        hint: "Full of energy, life, and strikingly bright in character or color.",
-        hintTa: "ஆற்றல் மற்றும் உயிர்ப்பால் நிரம்பிய; பளபளப்பான வண்ணம் அல்லது குணம் கொண்டது."
-    },
-    {
-        word: "shadow",
-        hint: "A dark shape formed when an object blocks a source of light.",
-        hintTa: "ஒரு பொருள் ஒளியை தடுக்கும்போது உருவாகும் இருண்ட வடிவம்; நிழல்."
-    },
-    {
-        word: "secret",
-        hint: "Something known only to a few people and intentionally kept hidden.",
-        hintTa: "சில பேருக்கு மட்டுமே தெரிந்த மற்றும் மறைத்து வைக்கப்பட்ட ஒன்று; இரகசியம்."
-    },
-    {
-        word: "puzzle",
-        hint: "A game, problem, or toy designed to test your knowledge or ingenuity.",
-        hintTa: "அறிவையும் புத்திசாலித்தனத்தையும் சோதிக்க வடிவமைக்கப்பட்ட விளையாட்டு அல்லது சிக்கல்; புதிர்."
-    },
-    {
-        word: "treasure",
-        hint: "A collection of valuable things, especially jewels or gold, often hidden away.",
-        hintTa: "பொன், நகை போன்ற மதிப்புமிக்க பொருட்களின் தொகுப்பு; அவை பெரும்பாலும் மறைக்கப்படும்; புதையல்."
-    },
-    {
-        word: "journey",
-        hint: "An act of traveling from one place to another, often long and meaningful.",
-        hintTa: "ஒரு இடத்திலிருந்து மற்றொரு இடத்திற்கு பயணிக்கும் செயல்பாடு; பயணம்."
-    },
-    {
-        word: "horizon",
-        hint: "The line where the sky and the Earth's surface appear to meet.",
-        hintTa: "வானமும் பூமியும் சந்திப்பது போல் தோன்றும் கோடு; அடிவானம்."
-    },
-    {
-        word: "brilliant",
-        hint: "Exceptionally clever, talented, or impressively bright.",
-        hintTa: "அசாதாரண புத்திசாலித்தனம் அல்லது திறமை கொண்டவர்; மிகவும் பிரகாசமான."
-    },
-    {
-        word: "grateful",
-        hint: "Feeling or showing appreciation and thankfulness for what you have received.",
-        hintTa: "கிடைத்ததற்கு நன்றி உணர்வும் பாராட்டும் கொண்டிருக்கும் நிலை; நன்றியுள்ளவர்."
-    },
-    {
-        word: "celebrate",
-        hint: "To mark a special occasion with festivities, joy, and shared happiness.",
-        hintTa: "சிறப்பு நிகழ்வை மகிழ்ச்சியுடன் கொண்டாடுதல்; விழா கொண்டாட்டம்."
-    },
-    {
-        word: "champion",
-        hint: "A person who has beaten all rivals to win a competition or contest.",
-        hintTa: "போட்டியில் அனைத்து எதிரிகளையும் வென்ற நபர்; சாம்பியன்."
-    },
-    {
-        word: "umbrella",
-        hint: "A folding canopy on a stick used as protection from rain or sun.",
-        hintTa: "மழை அல்லது வெய்யிலிலிருந்து பாதுகாக்கும் மடிக்கக்கூடிய குடை."
-    },
-    {
-        word: "calendar",
-        hint: "A chart or system that organizes days, weeks, and months of the year.",
-        hintTa: "ஆண்டின் நாட்கள், வாரங்கள் மற்றும் மாதங்களை ஒழுங்கமைக்கும் அட்டவணை; நாட்காட்டி."
-    },
-    {
-        word: "compass",
-        hint: "A navigational tool that shows direction using a magnetic needle.",
-        hintTa: "காந்த ஊசி மூலம் திசையைக் காட்டும் வழிசெலுத்தல் கருவி; திக்கு அறியும் கருவி."
-    },
-    {
-        word: "lantern",
-        hint: "A portable light enclosed in a transparent case, used for illumination.",
-        hintTa: "ஒளியை முடைத்து வைக்கும் கண்ணாடி உறை கொண்ட கையடக்க விளக்கு."
-    },
-    {
-        word: "memory",
-        hint: "The mental ability to store and recall past experiences and information.",
-        hintTa: "கடந்த கால அனுபவங்கள் மற்றும் தகவல்களை சேமித்து நினைவுகூறும் மன ஆற்றல்; நினைவாற்றல்."
-    },
+    { word: "guitar", hint: "A musical string instrument" },
+    { word: "ocean", hint: "A vast body of salt water" },
+    { word: "mountain", hint: "A large natural elevation" },
+    { word: "library", hint: "A place full of books" },
+    { word: "butterfly", hint: "A colorful flying insect" },
+    { word: "calendar", hint: "Shows days, months and years" },
+    { word: "diamond", hint: "The hardest gemstone" },
+    { word: "elephant", hint: "The largest land animal" },
+    { word: "festival", hint: "A time of celebration" },
+    { word: "galaxy", hint: "A system of millions of stars" },
+    { word: "hammer", hint: "A tool used to drive nails" },
+    { word: "island", hint: "Land surrounded by water" },
+    { word: "jungle", hint: "A dense tropical forest" },
+    { word: "kite", hint: "Flies high with the wind" },
+    { word: "lantern", hint: "A portable light source" },
+    { word: "magnet", hint: "Attracts iron and steel" },
+    { word: "notebook", hint: "Used for writing notes" },
+    { word: "orange", hint: "A citrus fruit" },
+    { word: "planet", hint: "Orbits around a star" },
+    { word: "quartz", hint: "A hard mineral crystal" },
+    { word: "rainbow", hint: "Appears after rain in the sky" },
+    { word: "shadow", hint: "Dark area blocked from light" },
+    { word: "telescope", hint: "Used to see distant stars" },
+    { word: "umbrella", hint: "Protection from rain" },
+    { word: "volcano", hint: "A mountain that erupts lava" },
+    { word: "waterfall", hint: "Water falling from a height" },
+    { word: "xylophone", hint: "A musical percussion instrument" },
+    { word: "yardstick", hint: "A measuring tool" },
+    { word: "zebra", hint: "A black and white striped animal" },
+    { word: "anchor", hint: "Keeps a ship in place" },
+    { word: "bridge", hint: "Connects two land masses" },
+    { word: "cactus", hint: "A spiny desert plant" },
+    { word: "desert", hint: "A hot sandy land with no water" },
+    { word: "engine", hint: "Powers a vehicle or machine" },
+    { word: "feather", hint: "Found on birds" },
+    { word: "giraffe", hint: "The tallest animal" },
+    { word: "horizon", hint: "Where sky meets the earth" },
+    { word: "iceberg", hint: "A floating mass of ice" },
+    { word: "journey", hint: "A long trip or travel" },
+    { word: "kingdom", hint: "Land ruled by a king" },
+    { word: "aberration", hint: "A deviation from what is normal" },
+    // --- Nature & Science ---
+    { word: "abyss", hint: "A deep or seemingly bottomless chasm" },
+    { word: "aurora", hint: "Natural light display in the sky" },
+    { word: "biosphere", hint: "The regions of the surface occupied by living organisms" },
+    { word: "catalyst", hint: "Substance that increases the rate of a chemical reaction" },
+    { word: "deciduous", hint: "Trees that shed their leaves annually" },
+    { word: "entropy", hint: "Lack of order or predictability; gradual decline into disorder" },
+    { word: "fossilize", hint: "The process of becoming a fossil" },
+    { word: "geyser", hint: "A hot spring that jets forth intermittent water" },
+    { word: "halcyon", hint: "Denoting a period of time that was idyllically happy and peaceful" },
+    { word: "isotope", hint: "Forms of the same element with different numbers of neutrons" },
+    { word: "juxtapose", hint: "Place close together for contrasting effect" },
+    { word: "kinetic", hint: "Relating to or resulting from motion" },
+    { word: "lichen", hint: "A simple slow-growing plant that forms a crust on rocks" },
+    { word: "monolith", hint: "A large single upright block of stone" },
+    { word: "nocturnal", hint: "Done, occurring, or active at night" },
+    { word: "obsidian", hint: "A hard, dark, glass-like volcanic rock" },
+    { word: "pendulum", hint: "A weight hung from a fixed point that swings freely" },
+    { word: "quicksilver", hint: "The liquid metal mercury" },
+    { word: "resonance", hint: "The quality in a sound of being deep, full, and echoing" },
+    { word: "stratosphere", hint: "The layer of the earth's atmosphere above the troposphere" },
+    { word: "tarantula", hint: "A large hairy spider" },
+    { word: "ultraviolet", hint: "Radiation having a wavelength shorter than violet light" },
+    { word: "viscosity", hint: "The state of being thick, sticky, and semi-fluid in consistency" },
+    { word: "weathering", hint: "Wear away or change the appearance by long exposure to air" },
+    { word: "xenon", hint: "A noble gas used in some specialized lamps" },
+    { word: "yield", hint: "Produce or provide a natural, agricultural, or industrial product" },
+    { word: "zenith", hint: "The time at which something is most powerful or successful" },
+    // --- Architecture & Objects ---
+    { word: "aqueduct", hint: "An artificial channel for conveying water" },
+    { word: "basilica", hint: "A large oblong hall or church with double aisles" },
+    { word: "colonnade", hint: "A row of columns supporting a roof" },
+    { word: "dormer", hint: "A window that projects vertically from a sloping roof" },
+    { word: "eaves", hint: "The part of a roof that meets or overhangs the walls" },
+    { word: "facade", hint: "The principal front of a building" },
+    { word: "gargoyle", hint: "A grotesque carved human or animal face on a building" },
+    { word: "hieroglyph", hint: "A stylized picture representing a word, syllable, or sound" },
+    { word: "inkwell", hint: "A container for ink on a desk" },
+    { word: "jettison", hint: "Throw or drop something from an aircraft or ship" },
+    { word: "knapsack", hint: "A bag with shoulder straps which is carried on the back" },
+    { word: "labyrinth", hint: "A complicated irregular network of passages; a maze" },
+    { word: "mausoleum", hint: "A building housing a tomb or tombs" },
+    { word: "niche", hint: "A shallow recess, especially one in a wall to display an ornament" },
+    { word: "obelisk", hint: "A stone pillar, typically having a square or rectangular cross section" },
+    { word: "pagoda", hint: "A Hindu or Buddhist temple or sacred building" },
+    { word: "quiver", hint: "An archer's case for holding arrows" },
+    { word: "rotunda", hint: "A round building or room, especially one with a dome" },
+    { word: "scaffolding", hint: "A temporary structure on the outside of a building" },
+    { word: "turret", hint: "A small tower on top of a larger tower" },
+    { word: "upholstery", hint: "Soft, padded textile covering that is fixed to furniture" },
+    { word: "vestibule", hint: "An antechamber, hall, or lobby next to the outer door" },
+    { word: "windlass", hint: "A winch mechanism, especially on a ship" },
+    // --- Abstract & Descriptive ---
+    { word: "ambiguous", hint: "Open to more than one interpretation" },
+    { word: "benevolent", hint: "Well meaning and kindly" },
+    { word: "cacophony", hint: "A harsh discordant mixture of sounds" },
+    { word: "dexterity", hint: "Skill in performing tasks, especially with the hands" },
+    { word: "eloquence", hint: "Fluent or persuasive speaking or writing" },
+    { word: "frivolous", hint: "Not having any serious purpose or value" },
+    { word: "garrulous", hint: "Excessively talkative, especially on trivial matters" },
+    { word: "hypothesis", hint: "A proposed explanation made on the basis of limited evidence" },
+    { word: "impeccable", hint: "In accordance with the highest standards; faultless" },
+    { word: "jovial", hint: "Cheerful and friendly" },
+    { word: "knell", hint: "The sound of a bell, especially when rung solemnly for a death" },
+    { word: "luminous", hint: "Full of or shedding light; bright or shining" },
+    { word: "meticulous", hint: "Showing great attention to detail; very careful and precise" },
+    { word: "nefarious", hint: "Wicked or criminal" },
+    { word: "opulent", hint: "Ostentatiously rich and luxurious or lavish" },
+    { word: "paradox", hint: "A seemingly absurd or self-contradictory statement" },
+    { word: "quandary", hint: "A state of perplexity or uncertainty over what to do" },
+    { word: "rhetoric", hint: "The art of effective or persuasive speaking or writing" },
+    { word: "serendipity", hint: "The occurrence of events by chance in a happy way" },
+    { word: "trepidation", hint: "A feeling of fear or agitation about something that may happen" },
+    { word: "ubiquitous", hint: "Present, appearing, or found everywhere" },
+    { word: "venerable", hint: "Accorded a great deal of respect, especially because of age" },
+    { word: "whimsical", hint: "Playfully quaint or fanciful, especially in an appealing way" },
+    { word: "yearning", hint: "A feeling of intense longing for something" },
+    { word: "zealous", hint: "Showing great energy or enthusiasm in pursuit of a cause" },
+    // --- Miscellaneous & Traditional ---
+    { word: "alchemy", hint: "The medieval forerunner of chemistry" },
+    { word: "bureau", hint: "An office or department for transacting particular business" },
+    { word: "clandestine", hint: "Kept secret or done secretively" },
+    { word: "doppelganger", hint: "An apparition or double of a living person" },
+    { word: "ephemeral", hint: "Lasting for a very short time" },
+    { word: "flamboyant", hint: "Tending to attract attention because of exuberance" },
+    { word: "gluttony", hint: "Habitual greed or excess in eating" },
+    { word: "haphazard", hint: "Lacking any obvious principle of organization" },
+    { word: "idiosyncrasy", hint: "A mode of behavior or way of thought peculiar to an individual" },
+    { word: "jargon", hint: "Special words used by a particular profession or group" },
+    { word: "kowtow", hint: "Act in an excessively subservient manner" },
+    { word: "lethargy", hint: "A lack of energy and enthusiasm" },
+    { word: "mnemonic", hint: "A device such as a pattern of letters to assist memory" },
+    { word: "nostalgia", hint: "A sentimental longing for the past" },
+    { word: "oblivion", hint: "The state of being unaware or unconscious of what is happening" },
+    { word: "plethora", hint: "A large or excessive amount of something" },
+    { word: "quintessential", hint: "Representing the most perfect or typical example" },
+    { word: "reminisce", hint: "Indulge in enjoyable recollection of past events" },
+    { word: "silhouette", hint: "The dark shape and outline of someone or something" },
+    { word: "talisman", hint: "An object thought to have magic powers or bring good luck" },
+    { word: "unscrupulous", hint: "Having or showing no moral principles" },
+    { word: "verbatim", hint: "In exactly the same words as were used originally" },
+    { word: "witticism", hint: "A witty remark" },
+    { word: "yesteryear", hint: "Last year or the recent past" },
+    { word: "ziggurat", hint: "A rectangular stepped tower, sometimes surmounted by a temple" },
+    // --- Professions & People ---
+    { word: "architect", hint: "A person who designs buildings" },
+    { word: "astronaut", hint: "A person trained to travel in space" },
+    { word: "barista", hint: "A person who makes and serves coffee" },
+    { word: "carpenter", hint: "A person who builds with wood" },
+    { word: "detective", hint: "A person who investigates crimes" },
+    { word: "electrician", hint: "A person who installs electrical wiring" },
+    { word: "engineer", hint: "A person who designs machines or bridges" },
+    { word: "firefighter", hint: "A person who puts out fires" },
+    { word: "gardener", hint: "A person who tends to plants and lawns" },
+    { word: "journalist", hint: "A person who writes for newspapers" },
+    { word: "librarian", hint: "A person in charge of a library" },
+    { word: "magician", hint: "A person who performs illusions" },
+    { word: "mechanic", hint: "A person who repairs engines" },
+    { word: "musician", hint: "A person who plays an instrument" },
+    { word: "nutritionist", hint: "An expert on diet and food" },
+    { word: "optician", hint: "A person who makes or sells eyeglasses" },
+    { word: "pilot", hint: "A person who flies an aircraft" },
+    { word: "plumber", hint: "A person who repairs water pipes" },
+    { word: "scientist", hint: "A person who studies the natural world" },
+    { word: "surgeon", hint: "A medical doctor who performs operations" },
+    { word: "veterinary", hint: "A doctor for animals" },
+    // --- Household & Daily Life ---
+    { word: "aquarium", hint: "A glass tank for fish" },
+    { word: "balcony", hint: "A platform on the outside of a building" },
+    { word: "blanket", hint: "A large piece of cloth used for warmth" },
+    { word: "blender", hint: "An appliance for mixing or liquefying food" },
+    { word: "broomstick", hint: "The handle of a cleaning tool" },
+    { word: "cabinet", hint: "A cupboard used for storage" },
+    { word: "chimney", hint: "A vertical pipe for smoke from a fire" },
+    { word: "curtain", hint: "A piece of cloth hung at a window" },
+    { word: "doorbell", hint: "A button pushed to announce arrival" },
+    { word: "flashlight", hint: "A battery-powered portable light" },
+    { word: "furniture", hint: "Items like tables and chairs" },
+    { word: "hairdryer", hint: "An appliance used to dry hair" },
+    { word: "keyboard", hint: "Used for typing on a computer" },
+    { word: "microwave", hint: "An oven that cooks food quickly" },
+    { word: "necklace", hint: "Jewelry worn around the neck" },
+    { word: "pavement", hint: "A hard surface for walking or driving" },
+    { word: "pillow", hint: "A soft cushion for the head in bed" },
+    { word: "radiator", hint: "An appliance used for heating a room" },
+    { word: "shampoo", hint: "A liquid used for washing hair" },
+    { word: "suitcase", hint: "A case used for carrying clothes while traveling" },
+    { word: "telephone", hint: "A device used for talking to others" },
+    { word: "television", hint: "A device for watching broadcasts" },
+    { word: "toaster", hint: "An appliance for browning bread" },
+    { word: "toothbrush", hint: "A small brush for cleaning teeth" },
+    { word: "wardrobe", hint: "A tall cabinet for hanging clothes" },
+    // --- Nature & Geography ---
+    { word: "avalanche", hint: "A mass of snow falling down a mountain" },
+    { word: "blizzard", hint: "A severe snowstorm with high winds" },
+    { word: "canyon", hint: "A deep gorge with a river flowing through" },
+    { word: "coastline", hint: "Where the land meets the sea" },
+    { word: "continent", hint: "One of the world's main continuous expanses of land" },
+    { word: "cyclone", hint: "A system of winds rotating inward" },
+    { word: "drought", hint: "A long period without rain" },
+    { word: "earthquake", hint: "A sudden shaking of the ground" },
+    { word: "evergreen", hint: "A plant that retains green leaves all year" },
+    { word: "forest", hint: "A large area covered with trees" },
+    { word: "harvest", hint: "The process of gathering crops" },
+    { word: "hurricane", hint: "A storm with a violent wind" },
+    { word: "landscape", hint: "All the visible features of an area of land" },
+    { word: "meadow", hint: "A field of grass and wildflowers" },
+    { word: "monsoon", hint: "A seasonal prevailing wind and rain" },
+    { word: "orchard", hint: "A piece of land planted with fruit trees" },
+    { word: "plateau", hint: "An area of relatively level high ground" },
+    { word: "rainforest", hint: "A luxuriant, dense forest rich in biodiversity" },
+    { word: "savanna", hint: "A grassy plain in tropical regions" },
+    { word: "tributary", hint: "A river or stream flowing into a larger river" },
+    { word: "wetland", hint: "Land consisting of marshes or swamps" },
+    { word: "wilderness", hint: "An uncultivated and uninhabited region" },
+    // --- Animals & Creatures ---
+    { word: "alligator", hint: "A large reptile with a broad snout" },
+    { word: "anteater", hint: "A mammal that eats ants and termites" },
+    { word: "baboon", hint: "A large Old World monkey" },
+    { word: "bluebird", hint: "A small North American songbird" },
+    { word: "buffalo", hint: "A heavily built wild ox" },
+    { word: "camel", hint: "A large animal with humps on its back" },
+    { word: "cheetah", hint: "The fastest land animal" },
+    { word: "chimpanzee", hint: "A great ape with high intelligence" },
+    { word: "crocodile", hint: "A large predatory semi-aquatic reptile" },
+    { word: "flamingo", hint: "A tall wading bird with pink feathers" },
+    { word: "gazelle", hint: "A small slender antelope" },
+    { word: "gorilla", hint: "The largest living primate" },
+    { word: "hedgehog", hint: "A small nocturnal mammal with spines" },
+    { word: "hippopotamus", hint: "A large thick-skinned African mammal" },
+    { word: "kangaroo", hint: "A large hopping mammal from Australia" },
+    { word: "leopard", hint: "A large cat with a spotted coat" },
+    { word: "octopus", hint: "A sea creature with eight arms" },
+    { word: "ostrich", hint: "A large flightless bird" },
+    { word: "panther", hint: "A large black wild cat" },
+    { word: "peacock", hint: "A male bird with a large colorful tail" },
+    { word: "penguin", hint: "A flightless bird that lives in the cold" },
+    { word: "platypus", hint: "A semi-aquatic egg-laying mammal" },
+    { word: "reindeer", hint: "A deer with large branched antlers" },
+    { word: "scorpion", hint: "An arachnid with a venomous sting" },
+    { word: "squirrel", hint: "A small rodent with a bushy tail" },
+    { word: "tiger", hint: "A large cat with orange and black stripes" },
+    { word: "walrus", hint: "A large marine mammal with tusks" },
+    { word: "whale", hint: "A very large marine mammal" },
+    // --- Sports & Hobbies ---
+    { word: "archery", hint: "Shooting with a bow and arrows" },
+    { word: "baseball", hint: "A game played with a bat and ball" },
+    { word: "basketball", hint: "A game where you shoot hoops" },
+    { word: "billiards", hint: "A game played on a cloth-covered table" },
+    { word: "bowling", hint: "Knocking down pins with a ball" },
+    { word: "camping", hint: "Living in a tent for recreation" },
+    { word: "chess", hint: "A strategic board game for two" },
+    { word: "cycling", hint: "Riding a bicycle" },
+    { word: "fishing", hint: "Catching fish with a rod and line" },
+    { word: "football", hint: "A sport involving kicking a ball" },
+    { word: "gymnastics", hint: "Exercises displaying physical agility" },
+    { word: "hiking", hint: "Walking in nature for exercise" },
+    { word: "hockey", hint: "A sport played on ice or a field" },
+    { word: "jogging", hint: "Running at a steady, gentle pace" },
+    { word: "karate", hint: "A martial art using hands and feet" },
+    { word: "kayak", hint: "A small narrow boat used with a paddle" },
+    { word: "knitting", hint: "Making garments with needles and yarn" },
+    { word: "origami", hint: "The Japanese art of folding paper" },
+    { word: "painting", hint: "Creating art with colors and brushes" },
+    { word: "photography", hint: "The art of taking pictures" },
+    { word: "pottery", hint: "Making objects out of clay" },
+    { word: "sailing", hint: "Traveling in a boat with sails" },
+    { word: "scuba", hint: "Diving underwater with breathing gear" },
+    { word: "skiing", hint: "Gliding over snow on long blades" },
+    { word: "soccer", hint: "The world's most popular sport" },
+    { word: "surfing", hint: "Riding waves on a board" },
+    { word: "swimming", hint: "Propelling oneself through water" },
+    { word: "tennis", hint: "A game played with rackets and a ball" },
+    { word: "volleyball", hint: "Hitting a ball over a net by hand" },
+    { word: "wrestling", hint: "Combat sport involving grappling" },
+    // --- Transport & Vehicles ---
+    { word: "airplane", hint: "A powered flying vehicle" },
+    { word: "ambulance", hint: "A vehicle for carrying sick people" },
+    { word: "bicycle", hint: "A vehicle with two wheels" },
+    { word: "bulldozer", hint: "A powerful tractor with a flat blade" },
+    { word: "carriage", hint: "A horse-drawn four-wheeled vehicle" },
+    { word: "helicopter", hint: "An aircraft with overhead rotors" },
+    { word: "motorcycle", hint: "A two-wheeled vehicle with an engine" },
+    { word: "railway", hint: "A track made of steel rails for trains" },
+    { word: "sailboat", hint: "A boat propelled by sails" },
+    { word: "scooter", hint: "A small vehicle with a footboard" },
+    { word: "skateboard", hint: "A board with wheels for riding" },
+    { word: "spaceship", hint: "A vehicle for travel in outer space" },
+    { word: "submarine", hint: "A vessel that travels underwater" },
+    { word: "tractor", hint: "A powerful vehicle used on farms" },
+    { word: "unicycle", hint: "A vehicle with only one wheel" },
+    // --- Food & Ingredients ---
+    { word: "apricot", hint: "A small orange-colored fruit" },
+    { word: "baguette", hint: "A long thin loaf of French bread" },
+    { word: "broccoli", hint: "A green vegetable with a flowery head" },
+    { word: "cabbage", hint: "A vegetable with thick green leaves" },
+    { word: "carrot", hint: "An orange root vegetable" },
+    { word: "cheese", hint: "A food made from milk curds" },
+    { word: "coconut", hint: "A large nut with a hard shell" },
+    { word: "cucumber", hint: "A long green watery vegetable" },
+    { word: "dessert", hint: "A sweet course at the end of a meal" },
+    { word: "eggplant", hint: "A purple vegetable used in cooking" },
+    { word: "garlic", hint: "A pungent bulb used in cooking" },
+    { word: "hamburger", hint: "A patty of meat in a bun" },
+    { word: "icecream", hint: "A frozen sweet snack" },
+    { word: "lasagna", hint: "Baked Italian pasta layers" },
+    { word: "lemonade", hint: "A drink made from lemons and sugar" },
+    { word: "mushroom", hint: "A fungus that is often edible" },
+    { word: "noodle", hint: "A strip of dough cooked in liquid" },
+    { word: "omelet", hint: "Beaten eggs cooked in a pan" },
+    { word: "pancake", hint: "A thin flat cake of fried batter" },
+    { word: "peanut", hint: "A common edible nut-like seed" },
+    { word: "pineapple", hint: "A tropical fruit with a prickly skin" },
+    { word: "pizza", hint: "Flat dough topped with cheese and sauce" },
+    { word: "potato", hint: "A common starchy root vegetable" },
+    { word: "pumpkin", hint: "A large orange squash" },
+    { word: "sandwich", hint: "Food between two slices of bread" },
+    { word: "spinach", hint: "A green leafy vegetable" },
+    { word: "strawberry", hint: "A sweet red fruit with seeds on the outside" },
+    { word: "tomato", hint: "A red fruit often used as a vegetable" },
+    { word: "vanilla", hint: "A popular flavor for sweets" },
+    { word: "yogurt", hint: "A semi-solid food from fermented milk" },
+    // --- Abstract Concepts ---
+    { word: "adventure", hint: "An exciting or daring experience" },
+    { word: "birthday", hint: "The anniversary of one's birth" },
+    { word: "celebration", hint: "Marking a special occasion" },
+    { word: "comfort", hint: "A state of physical ease" },
+    { word: "courage", hint: "Bravery in the face of fear" },
+    { word: "curiosity", hint: "A strong desire to know something" },
+    { word: "distance", hint: "The amount of space between things" },
+    { word: "education", hint: "The process of learning" },
+    { word: "energy", hint: "The strength for physical activity" },
+    { word: "freedom", hint: "The power to act or speak freely" },
+    { word: "friendship", hint: "A relationship between friends" },
+    { word: "happiness", hint: "The state of being happy" },
+    { word: "holiday", hint: "A day of festivity or recreation" },
+    { word: "imagination", hint: "The ability to form mental images" },
+    { word: "knowledge", hint: "Facts and information acquired" },
+    { word: "laughter", hint: "The sound of being amused" },
+    { word: "memory", hint: "The faculty by which the mind stores info" },
+    { word: "patience", hint: "The capacity to accept delay" },
+    { word: "quiet", hint: "Making very little noise" },
+    { word: "success", hint: "The accomplishment of an aim" },
+    { word: "surprise", hint: "An unexpected event" },
+    { word: "victory", hint: "Winning a struggle or game" },
+    { word: "wisdom", hint: "The quality of having experience and knowledge" },
+    // --- Technology & Gadgets ---
+    { word: "algorithm", hint: "A process or set of rules for a computer" },
+    { word: "battery", hint: "A container consisting of cells for electricity" },
+    { word: "bluetooth", hint: "Wireless technology for short distances" },
+    { word: "browser", hint: "A program used to view websites" },
+    { word: "camera", hint: "A device for recording visual images" },
+    { word: "charger", hint: "A device used to restore energy to a battery" },
+    { word: "computer", hint: "An electronic machine for storing data" },
+    { word: "database", hint: "A structured set of data held in a computer" },
+    { word: "display", hint: "An electronic device for visual info" },
+    { word: "earbuds", hint: "Small headphones worn inside the ear" },
+    { word: "ethernet", hint: "A system for connecting a number of computers" },
+    { word: "firewall", hint: "A security system for networks" },
+    { word: "hardware", hint: "The physical parts of a computer" },
+    { word: "internet", hint: "A global computer network" },
+    { word: "laptop", hint: "A portable personal computer" },
+    { word: "monitor", hint: "A screen used to display output" },
+    { word: "network", hint: "A group of interconnected computers" },
+    { word: "password", hint: "A secret word used to gain access" },
+    { word: "printer", hint: "A machine for printing text or images" },
+    { word: "processor", hint: "The brain of the computer" },
+    { word: "router", hint: "A device that forwards data packets" },
+    { word: "scanner", hint: "A device that converts documents to digital" },
+    { word: "software", hint: "Programs used by a computer" },
+    { word: "speaker", hint: "A device that converts electrical signals to sound" },
+    { word: "tablet", hint: "A flat, portable computer with a touchscreen" },
+    { word: "webcam", hint: "A video camera connected to a computer" },
+    // --- The Human Body ---
+    { word: "abdomen", hint: "The part of the body containing the stomach" },
+    { word: "artery", hint: "A tube carrying blood away from the heart" },
+    { word: "backbone", hint: "The series of vertebrae extending from the skull" },
+    { word: "bladder", hint: "A sac in which urine is collected" },
+    { word: "capillary", hint: "Fine-branching blood vessels" },
+    { word: "cartilage", hint: "Firm, flexible connective tissue" },
+    { word: "clavicle", hint: "The collarbone" },
+    { word: "digestion", hint: "The process of breaking down food" },
+    { word: "eyebrow", hint: "The strip of hair growing above the eye" },
+    { word: "femur", hint: "The bone of the thigh" },
+    { word: "fingertip", hint: "The end of a finger" },
+    { word: "forehead", hint: "The part of the face above the eyes" },
+    { word: "heartbeat", hint: "The pulsation of the heart" },
+    { word: "intestine", hint: "The lower part of the digestive canal" },
+    { word: "kidney", hint: "Organ that filters blood" },
+    { word: "knuckle", hint: "A joint of a finger" },
+    { word: "ligament", hint: "Tissue that connects two bones" },
+    { word: "liver", hint: "Large organ that processes blood" },
+    { word: "muscle", hint: "Tissue that produces movement" },
+    { word: "neuron", hint: "A specialized cell transmitting nerve impulses" },
+    { word: "pancreas", hint: "Gland behind the stomach" },
+    { word: "platelet", hint: "Cell fragment involved in clotting" },
+    { word: "ribcage", hint: "The structure of bones around the chest" },
+    { word: "skeleton", hint: "The internal framework of the body" },
+    { word: "tendon", hint: "Tissue attaching a muscle to a bone" },
+    // --- Tools & Hardware ---
+    { word: "anvil", hint: "A heavy iron block used by blacksmiths" },
+    { word: "chainsaw", hint: "A mechanical power-driven saw" },
+    { word: "chisel", hint: "A tool with a metal blade for cutting stone or wood" },
+    { word: "crowbar", hint: "An iron bar with a flattened end used as a lever" },
+    { word: "drill", hint: "A tool for making holes" },
+    { word: "grinder", hint: "A machine for sharpening or polishing" },
+    { word: "hacksaw", hint: "A saw with a narrow fine-toothed blade" },
+    { word: "level", hint: "A tool used to determine horizontal plane" },
+    { word: "mallet", hint: "A hammer with a large wooden head" },
+    { word: "pliers", hint: "Pincers with parallel flat surfaces" },
+    { word: "wrench", hint: "A tool for gripping and turning bolts" },
+    { word: "sawdust", hint: "Fine particles of wood made by sawing" },
+    { word: "screwdriver", hint: "A tool for turning screws" },
+    { word: "shovel", hint: "A tool for moving coal, earth, or snow" },
+    { word: "toolbox", hint: "A box for storing hand tools" },
+    { word: "trowel", hint: "A small handheld tool with a flat blade" },
+    { word: "vice", hint: "A metal tool with jaw for holding an object" },
+    // --- Clothing & Fashion ---
+    { word: "bandana", hint: "A large colorful handkerchief" },
+    { word: "bathrobe", hint: "A loose piece of clothing worn after a bath" },
+    { word: "bowtie", hint: "A necktie in the form of a bow" },
+    { word: "bracelet", hint: "An ornamental band worn on the wrist" },
+    { word: "cardigan", hint: "A knitted sweater fastening with buttons" },
+    { word: "earring", hint: "A piece of jewelry worn on the ear" },
+    { word: "fedora", hint: "A low-crowned felt hat" },
+    { word: "footwear", hint: "Outer coverings for the feet" },
+    { word: "glasses", hint: "Lenses worn to correct vision" },
+    { word: "handbag", hint: "A small bag used by women to carry items" },
+    { word: "jacket", hint: "An outer garment extending to the waist" },
+    { word: "mittens", hint: "Gloves with a single section for fingers" },
+    { word: "overalls", hint: "Trousers with a front flap and shoulder straps" },
+    { word: "pajamas", hint: "Clothes worn for sleeping" },
+    { word: "raincoat", hint: "A water-resistant coat" },
+    { word: "sandals", hint: "Light shoes with straps" },
+    { word: "sneakers", hint: "Soft shoes worn for sports" },
+    { word: "trousers", hint: "An outer garment covering the body from waist to ankles" },
+    { word: "waistcoat", hint: "A vest worn under a jacket" },
+    // --- Cities & Places ---
+    { word: "airport", hint: "A place where aircraft land and take off" },
+    { word: "bakery", hint: "A place where bread and cakes are made" },
+    { word: "capital", hint: "The most important city of a country" },
+    { word: "cemetery", hint: "A burial ground" },
+    { word: "church", hint: "A building used for public Christian worship" },
+    { word: "factory", hint: "A building where goods are manufactured" },
+    { word: "garage", hint: "A building for housing a car" },
+    { word: "hospital", hint: "An institution providing medical treatment" },
+    { word: "hotel", hint: "A place providing lodging for travelers" },
+    { word: "market", hint: "A regular gathering for buying and selling" },
+    { word: "museum", hint: "A building where objects are exhibited" },
+    { word: "park", hint: "A large public garden or area of land" },
+    { word: "pharmacy", hint: "A shop where medicinal drugs are sold" },
+    { word: "prison", hint: "A building where people are legally held" },
+    { word: "restaurant", hint: "A place where people pay to eat meals" },
+    { word: "school", hint: "An institution for educating children" },
+    { word: "stadium", hint: "A large building for sports events" },
+    { word: "temple", hint: "A building devoted to worship" },
+    { word: "theater", hint: "A building for dramatic performances" },
+    { word: "university", hint: "An institution of high-level learning" },
+    { word: "village", hint: "A small settlement in a country area" },
+    { word: "zoo", hint: "A place which maintains a collection of wild animals" },
+    // --- Countries ---
+    { word: "america", hint: "A large continent in the western hemisphere" },
+    { word: "argentina", hint: "A South American country known for tango" },
+    { word: "australia", hint: "A country and continent surrounded by ocean" },
+    { word: "brazil", hint: "The largest country in South America" },
+    { word: "canada", hint: "A North American country with maple leaves" },
+    { word: "china", hint: "A large country in East Asia with a Great Wall" },
+    { word: "egypt", hint: "A country in North Africa famous for pyramids" },
+    { word: "england", hint: "A country part of the United Kingdom" },
+    { word: "france", hint: "A European country famous for the Eiffel Tower" },
+    { word: "germany", hint: "A central European country known for engineering" },
+    { word: "greece", hint: "A country in SE Europe with ancient history" },
+    { word: "india", hint: "A South Asian country with the Taj Mahal" },
+    { word: "italy", hint: "A European country shaped like a boot" },
+    { word: "japan", hint: "An island nation in East Asia" },
+    { word: "kenya", hint: "An East African country known for safaris" },
+    { word: "mexico", hint: "A North American country south of the USA" },
+    { word: "morocco", hint: "A North African country bordering the Atlantic" },
+    { word: "norway", hint: "A Scandinavian country known for fjords" },
+    { word: "peru", hint: "A South American country home to Machu Picchu" },
+    { word: "russia", hint: "The largest country in the world by area" },
+    { word: "spain", hint: "A European country on the Iberian Peninsula" },
+    { word: "sweden", hint: "A Scandinavian country known for pop music" },
+    { word: "thailand", hint: "A Southeast Asian country known for beaches" },
+    { word: "turkey", hint: "A country bridging Europe and Asia" },
+    { word: "vietnam", hint: "A Southeast Asian country on the South China Sea" },
+    // --- Cities & Capitals ---
+    { word: "athens", hint: "The capital city of Greece" },
+    { word: "bangkok", hint: "The capital city of Thailand" },
+    { word: "beijing", hint: "The capital city of China" },
+    { word: "berlin", hint: "The capital city of Germany" },
+    { word: "cairo", hint: "The capital city of Egypt" },
+    { word: "chicago", hint: "A large city in the US state of Illinois" },
+    { word: "delhi", hint: "A major city and territory in northern India" },
+    { word: "dubai", hint: "A city in the UAE known for luxury shopping" },
+    { word: "dublin", hint: "The capital city of Ireland" },
+    { word: "havana", hint: "The capital city of Cuba" },
+    { word: "istanbul", hint: "A major city in Turkey across two continents" },
+    { word: "jakarta", hint: "The capital city of Indonesia" },
+    { word: "lisbon", hint: "The capital city of Portugal" },
+    { word: "london", hint: "The capital city of the United Kingdom" },
+    { word: "madrid", hint: "The capital city of Spain" },
+    { word: "manila", hint: "The capital city of the Philippines" },
+    { word: "moscow", hint: "The capital city of Russia" },
+    { word: "mumbai", hint: "A densely populated city on India's west coast" },
+    { word: "nairobi", hint: "The capital city of Kenya" },
+    { word: "oslo", hint: "The capital city of Norway" },
+    { word: "paris", hint: "The capital city of France" },
+    { word: "rome", hint: "The capital city of Italy" },
+    { word: "seoul", hint: "The capital city of South Korea" },
+    { word: "sydney", hint: "A major city in Australia with an Opera House" },
+    { word: "tokyo", hint: "The capital city of Japan" },
+    { word: "toronto", hint: "A major city in Canada on Lake Ontario" },
+    { word: "venice", hint: "An Italian city built on canals" },
+    { word: "vienna", hint: "The capital city of Austria" },
+    // --- Landforms ---
+    { word: "atoll", hint: "A ring-shaped reef or island" },
+    { word: "bayou", hint: "A marshy outlet of a lake or river" },
+    { word: "beach", hint: "A pebbly or sandy shore by the sea" },
+    { word: "cliff", hint: "A steep rock face, especially at the edge of the sea" },
+    { word: "crater", hint: "A large bowl-shaped cavity in the ground" },
+    { word: "creek", hint: "A stream or minor tributary of a river" },
+    { word: "delta", hint: "Ideally triangular tract at a river mouth" },
+    { word: "dune", hint: "A mound or ridge of sand formed by the wind" },
+    { word: "estuary", hint: "The tidal mouth of a large river" },
+    { word: "fjord", hint: "A long, narrow, deep inlet of the sea" },
+    { word: "gorge", hint: "A narrow valley between hills or mountains" },
+    { word: "grove", hint: "A small wood or group of trees" },
+    { word: "hill", hint: "A naturally raised area of land" },
+    { word: "isthmus", hint: "A narrow strip of land connecting two larger areas" },
+    { word: "lagoon", hint: "A stretch of salt water separated from the sea" },
+    { word: "lake", hint: "A large body of water surrounded by land" },
+    { word: "marsh", hint: "An area of low-lying land that is flooded" },
+    { word: "mesa", hint: "An isolated flat-topped hill with steep sides" },
+    { word: "peak", hint: "The pointed top of a mountain" },
+    { word: "plain", hint: "A large area of flat land with few trees" },
+    { word: "pond", hint: "A small body of still water" },
+    { word: "prairie", hint: "A large open area of grassland" },
+    { word: "reef", hint: "A ridge of jagged rock or coral near the sea surface" },
+    { word: "sandbar", hint: "A long, narrow sandbank" },
+    { word: "shore", hint: "The land along the edge of a sea or lake" },
+    { word: "strait", hint: "A narrow passage of water connecting two seas" },
+    { word: "stream", hint: "A small, narrow river" },
+    { word: "summit", hint: "The highest point of a hill or mountain" },
+    { word: "swamp", hint: "An area of low-lying, uncultivated ground" },
+    { word: "tundra", hint: "A vast, flat, treeless Arctic region" },
+    { word: "taiga", hint: "The swampy coniferous forest of high northern latitudes" },
+    { word: "trench", hint: "A long, narrow ditch" },
+    { word: "boulder", hint: "A large rock worn smooth by water or weather" },
+    { word: "pebble", hint: "A small stone made smooth and round by water" },
+    { word: "gravel", hint: "A loose aggregation of small water-worn stones" },
+    { word: "sediment", hint: "Matter that settles to the bottom of a liquid" },
+    { word: "fossil", hint: "The remains or impression of a prehistoric organism" },
+    // --- Space & Astronomy ---
+    { word: "asteroid", hint: "A small rocky body orbiting the sun" },
+    { word: "blackhole", hint: "A region of space having a strong gravitational field" },
+    { word: "comet", hint: "A celestial object with a tail of gas and dust" },
+    { word: "constellation", hint: "A group of stars forming a recognizable pattern" },
+    { word: "cosmos", hint: "The universe seen as a well-ordered whole" },
+    { word: "eclipse", hint: "An obscuring of the light from one celestial body" },
+    { word: "equinox", hint: "Time when sun crosses the celestial equator" },
+    { word: "gravity", hint: "The force that attracts a body toward the earth" },
+    { word: "jupiter", hint: "The largest planet in the solar system" },
+    { word: "mars", hint: "The red planet, fourth from the sun" },
+    { word: "mercury", hint: "The smallest planet, closest to the sun" },
+    { word: "meteor", hint: "A small body of matter from outer space" },
+    { word: "moon", hint: "The natural satellite of the earth" },
+    { word: "nebula", hint: "A cloud of gas and dust in outer space" },
+    { word: "neptune", hint: "The eighth and farthest known planet" },
+    { word: "orbit", hint: "The curved path of a celestial object" },
+    { word: "pluto", hint: "A dwarf planet in the Kuiper belt" },
+    { word: "pulsar", hint: "A celestial object emitting pulses of radio waves" },
+    { word: "quasar", hint: "A massive and extremely remote celestial object" },
+    { word: "rocket", hint: "A cylindrical projectile propelled to great height" },
+    { word: "satellite", hint: "An artificial body placed in orbit around the earth" },
+    { word: "saturn", hint: "The sixth planet, known for its rings" },
+    { word: "solstice", hint: "When the sun reaches its highest or lowest point" },
+    { word: "star", hint: "A fixed luminous point in the night sky" },
+    { word: "sun", hint: "The star around which the earth orbits" },
+    { word: "supernova", hint: "A star that suddenly increases greatly in brightness" },
+    { word: "universe", hint: "All existing matter and space considered as a whole" },
+    { word: "uranus", hint: "The seventh planet from the sun" },
+    { word: "venus", hint: "The second planet from the sun" },
+    { word: "zodiac", hint: "A belt of the heavens divided into twelve signs" },
+    { word: "rover", hint: "A vehicle for exploring the surface of a planet" },
+    { word: "probe", hint: "An unmanned exploratory spacecraft" },
+    { word: "alien", hint: "A being from another world" },
+    { word: "lunar", hint: "Relating to the moon" },
+    { word: "stellar", hint: "Relating to a star or stars" },
+    { word: "dimension", hint: "A measurable extent of some kind" },
+    { word: "vacuum", hint: "A space entirely devoid of matter" },
+    { word: "hemisphere", hint: "A half of the earth" },
+    { word: "magma", hint: "Hot fluid below the earth's crust" },
+    { word: "tectonic", hint: "Relating to the structure of the earth's crust" },
+    // --- Weather & Climate ---
+    { word: "atmosphere", hint: "The envelope of gases surrounding the earth" },
+    { word: "breeze", hint: "A gentle wind" },
+    { word: "climate", hint: "The weather conditions prevailing in an area" },
+    { word: "cloud", hint: "A visible mass of condensed water vapor" },
+    { word: "dew", hint: "Tiny drops of water causing condensation" },
+    { word: "fog", hint: "A thick cloud of tiny water droplets" },
+    { word: "frost", hint: "A deposit of small white ice crystals" },
+    { word: "hail", hint: "Pellets of frozen rain" },
+    { word: "humidity", hint: "The state or quality of being humid" },
+    { word: "lightning", hint: "A natural electrical discharge of high voltage" },
+    { word: "mist", hint: "A cloud of tiny water droplets in the atmosphere" },
+    { word: "rain", hint: "Moisture condensed from the atmosphere" },
+    { word: "snow", hint: "Atmospheric water vapor frozen into ice crystals" },
+    { word: "storm", hint: "A violent disturbance of the atmosphere" },
+    { word: "sunshine", hint: "Direct sunlight unbroken by cloud" },
+    { word: "temperature", hint: "The degree or intensity of heat" },
+    { word: "typhoon", hint: "A tropical storm in the western Pacific oceans" },
+    { word: "wind", hint: "The perceptible natural movement of the air" },
+    // --- Maps & Directions ---
+    { word: "atlas", hint: "A book of maps or charts" },
+    { word: "border", hint: "A line separating two political or geographical areas" },
+    { word: "cartography", hint: "The science or practice of drawing maps" },
+    { word: "compass", hint: "An instrument containing a magnetized pointer" },
+    { word: "east", hint: "The direction where the sun rises" },
+    { word: "equator", hint: "An imaginary line drawn around the earth" },
+    { word: "globe", hint: "A spherical representation of the earth" },
+    { word: "latitude", hint: "The angular distance north or south of the equator" },
+    { word: "longitude", hint: "The angular distance east or west of the meridian" },
+    { word: "map", hint: "A diagrammatic representation of an area" },
+    { word: "meridian", hint: "A circle of constant longitude" },
+    { word: "north", hint: "The direction in which a compass needle points" },
+    { word: "pole", hint: "Either of the two points at opposite ends of earth's axis" },
+    { word: "south", hint: "The direction opposite to north" },
+    { word: "territory", hint: "An area of land under the jurisdiction of a ruler" },
+    { word: "topography", hint: "The arrangement of natural and artificial physical features" },
+    { word: "west", hint: "The direction where the sun sets" },
+    { word: "zone", hint: "An area having a particular characteristic" },
+    // --- Adjectives & Descriptors ---
+    { word: "ancient", hint: "Belonging to the very distant past" },
+    { word: "bitter", hint: "Having a sharp, pungent taste or smell; not sweet" },
+    { word: "brave", hint: "Ready to face danger or pain; showing courage" },
+    { word: "bright", hint: "Giving out or reflecting a lot of light; shining" },
+    { word: "broad", hint: "Having an ample distance from side to side; wide" },
+    { word: "calm", hint: "Not showing or feeling strong emotions" },
+    { word: "careful", hint: "Avoiding potential danger; cautious" },
+    { word: "cheap", hint: "Low in price, especially relative to similar items" },
+    { word: "cheerful", hint: "Noticeably happy and optimistic" },
+    { word: "clever", hint: "Quick to understand and devise ideas; intelligent" },
+    { word: "complex", hint: "Consisting of many different and connected parts" },
+    { word: "cowardly", hint: "Lacking courage" },
+    { word: "cruel", hint: "Willfully causing pain or suffering to others" },
+    { word: "dark", hint: "With little or no light" },
+    { word: "deep", hint: "Extending far down from the top or surface" },
+    { word: "dense", hint: "Closely compacted in substance" },
+    { word: "dull", hint: "Lacking interest or excitement" },
+    { word: "empty", hint: "Containing nothing; not filled or occupied" },
+    { word: "expensive", hint: "Costing a lot of money" },
+    { word: "fierce", hint: "Having an intense or ferocious aggressiveness" },
+    { word: "foolish", hint: "Lacking good sense or judgment; unwise" },
+    { word: "friendly", hint: "Kind and pleasant" },
+    { word: "funny", hint: "Causing laughter or amusement; humorous" },
+    { word: "gentle", hint: "Having a mild, kind, or tender temperament" },
+    { word: "greedy", hint: "Having an intense and selfish desire for something" },
+    { word: "happy", hint: "Feeling or showing pleasure or contentment" },
+    { word: "heavy", hint: "Of great weight; difficult to lift or move" },
+    { word: "hollow", hint: "Having a hole or empty space inside" },
+    { word: "hot", hint: "Having a high degree of heat or a high temperature" },
+    // --- Action Verbs ---
+    { word: "absorb", hint: "Take in or soak up energy or a liquid" },
+    { word: "accelerate", hint: "Begin to move more quickly" },
+    { word: "accomplish", hint: "Achieve or complete successfully" },
+    { word: "accumulate", hint: "Gather together an increasing number or quantity" },
+    { word: "achieve", hint: "Successfully reach a desired objective by effort" },
+    { word: "adjust", hint: "Alter something slightly to achieve the desired result" },
+    { word: "admire", hint: "Regard with respect or warm approval" },
+    { word: "advance", hint: "Move forwards in a purposeful way" },
+    { word: "analyze", hint: "Examine methodically and in detail" },
+    { word: "announce", hint: "Make a public declaration about a fact or intention" },
+    { word: "anticipate", hint: "Regard as probable; expect or predict" },
+    { word: "apologize", hint: "Express regret for something that one has done wrong" },
+    { word: "appreciate", hint: "Recognize the full worth of" },
+    { word: "assemble", hint: "Gather together in one place for a common purpose" },
+    { word: "assess", hint: "Evaluate or estimate the nature, ability, or quality of" },
+    { word: "attract", hint: "Cause to come to a place by offering something of interest" },
+    { word: "avoid", hint: "Keep away from or stop oneself from doing something" },
+    { word: "balance", hint: "Keep something in a steady position so that it does not fall" },
+    { word: "bargain", hint: "Negotiate the terms and conditions of a transaction" },
+    { word: "believe", hint: "Accept that something is true" },
+    { word: "blossom", hint: "Produce flowers or masses of flowers" },
+    { word: "bounce", hint: "Rebound once or repeatedly from a surface" },
+    { word: "breathe", hint: "Take air into the lungs and then expel it" },
+    { word: "build", hint: "Construct something by putting parts together" },
+    { word: "calculate", hint: "Determine the amount or number of something mathematically" },
+    { word: "capture", hint: "Take into possession or control by force" },
+    { word: "carve", hint: "Cut into a hard material to produce a design" },
+    { word: "celebrate", hint: "Acknowledge a significant day with shared happiness" },
+    { word: "challenge", hint: "Invite someone to engage in a contest" },
+    { word: "chase", hint: "Pursue in order to catch or catch up with" },
+    { word: "choose", hint: "Pick out or select someone as the most appropriate" },
+    { word: "clarify", hint: "Make a statement or situation less confused" },
 ];
